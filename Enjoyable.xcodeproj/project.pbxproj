@@ -195,6 +195,7 @@
 				Base,
 				en,
 				de,
+				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Enjoy */;
 			packageReferences = (

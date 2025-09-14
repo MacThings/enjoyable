@@ -1,0 +1,156 @@
+/* default name for first the mapping */
+"(default)" = "(défaut)";
+
+/* Magic string to trigger automatic mapping renames. It should look like an identifier rather than normal word, with the @ on the front. */
+"@Application" = "@Application";
+
+/* axis name */
+"axis %d" = "Axe %d";
+
+/* axis high trigger */
+"axis high" = "Haut";
+
+/* axis low trigger */
+"axis low" = "Bas";
+
+/* button name */
+"button %d" = "Bouton %d";
+
+/* button to cancel import */
+"cancel import" = "Annuler";
+
+/* keyboard key */
+"Caps Lock" = "Verr Maj";
+
+/* menu item text to disable event simulation */
+"Disable" = "Désactiver";
+
+/* menu item text to enable event simulation */
+"Enable" = "Activer";
+
+/* shown when user must enter a key code to map to */
+"enter key code" = "Entrez un code touche (ex. : 0x2A)";
+
+/* hat switch down state */
+"hat down" = "Bas";
+
+/* hat switch left state */
+"hat left" = "Gauche";
+
+/* hat switch right state */
+"hat right" = "Droite";
+
+/* hat switch name */
+"hat switch %d" = "Chapeau %d";
+
+/* hat switch up state */
+"hat up" = "Haut";
+
+/* button to merge imported mappings */
+"import and merge" = "Fusionner";
+
+/* Explanation of import conflict */
+"import conflict in %@" = "Ce fichier contient des entrées déjà mappées dans « %@ ». Voulez-vous les fusionner et remplacer vos mappages existants ou importer comme un nouveau mappage ?";
+
+/* Title of import conflict alert */
+"import conflict prompt" = "Remplacer les mappages existants ?";
+
+/* button to import as new mapping */
+"import new mapping" = "Nouveau mappage";
+
+/* keyboard key */
+"Insert" = "Inser";
+
+/* shown when the user types an invalid key code */
+"invalid key code" = "Le code doit être un petit nombre hexadécimal (ex : 0xA2)";
+
+/* error when imported file was JSON but not a mapping */
+"invalid mapping file" = "Ce fichier n’est pas un fichier de mappage valide.";
+
+/* unknown key code */
+"key 0x%x" = "Touche 0x%x";
+
+/* numeric pad key */
+"Key Pad -" = "Pavé -";
+
+/* numeric pad key */
+"Key Pad ," = "Pavé ,";
+
+/* numeric pad key */
+"Key Pad ." = "Pavé .";
+
+/* numeric pad key */
+"Key Pad *" = "Pavé *";
+
+/* numeric pad key */
+"Key Pad /" = "Pavé /";
+
+/* numeric pad key */
+"Key Pad +" = "Pavé +";
+
+/* numeric pad key */
+"Key Pad =" = "Pavé =";
+
+/* numeric pad key */
+"Key Pad 0" = "Pavé 0";
+
+/* numeric pad key */
+"Key Pad 1" = "Pavé 1";
+
+/* numeric pad key */
+"Key Pad 2" = "Pavé 2";
+
+/* numeric pad key */
+"Key Pad 3" = "Pavé 3";
+
+/* numeric pad key */
+"Key Pad 4" = "Pavé 4";
+
+/* numeric pad key */
+"Key Pad 5" = "Pavé 5";
+
+/* numeric pad key */
+"Key Pad 6" = "Pavé 6";
+
+/* numeric pad key */
+"Key Pad 7" = "Pavé 7";
+
+/* numeric pad key */
+"Key Pad 8" = "Pavé 8";
+
+/* numeric pad key */
+"Key Pad 9" = "Pavé 9";
+
+/* keyboard key */
+"Left ⇧" = "⇧ gauche";
+
+/* keyboard key */
+"Left ⌃" = "⌃ gauche";
+
+/* keyboard key */
+"Left ⌘" = "⌘ gauche";
+
+/* keyboard key */
+"Left ⌥" = "⌥ gauche";
+
+/* menu item when mappings list overflows */
+"mapping overflow %lu" = "(et %lu de plus…)";
+
+/* keyboard key */
+"Menu" = "Menu";
+
+/* keyboard key */
+"Right ⇧" = "⇧ droite";
+
+/* keyboard key */
+"Right ⌃" = "⌃ droite";
+
+/* keyboard key */
+"Right ⌘" = "⌘ droite";
+
+/* keyboard key */
+"Right ⌥" = "⌥ droite";
+
+/* name for new mappings */
+"Untitled" = "Sans titre";
+
