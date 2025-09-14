@@ -2,7 +2,7 @@ I picked up the abandoned (more than 10 Years) Project from here: https://github
 
 It's Universal Binary (Intel+ARM) now and can run without problems on the latest macOS (minimum 10.15.4). I fixed some bugs and make it dark/light Theme capable.
 
-<img width="776" height="515" alt="image" src="https://github.com/user-attachments/assets/dd2a0a7a-2f93-439f-9c9c-cbd6f7033e4d" />
+<img width="776" height="515" alt="image" src="https://github.com/user-attachments/assets/1bc2cfeb-851e-461a-b5c3-595f2c8a06c4" />
 
 Have fun. (-:
 
