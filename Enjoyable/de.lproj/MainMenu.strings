@@ -1,0 +1,207 @@
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
+"19.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
+"23.title" = "Minimize";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
+"24.title" = "Window";
+
+/* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
+"29.title" = "AMainMenu";
+
+/* Class = "NSMenuItem"; title = "Enjoyable"; ObjectID = "56"; */
+"56.title" = "Enjoyable";
+
+/* Class = "NSMenu"; title = "Enjoyable"; ObjectID = "57"; */
+"57.title" = "Enjoyable";
+
+/* Class = "NSMenuItem"; title = "About Enjoyable"; ObjectID = "58"; */
+"58.title" = "Über Enjoyable";
+
+/* Class = "NSMenu"; title = "Mappings"; ObjectID = "81"; */
+"81.title" = "Mappings";
+
+/* Class = "NSMenuItem"; title = "Mappings"; ObjectID = "83"; */
+"83.title" = "Mappings";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Hide Enjoyable"; ObjectID = "134"; */
+"134.title" = "Enjoyable ausblenden";
+
+/* Class = "NSMenuItem"; title = "Quit Enjoyable"; ObjectID = "136"; */
+"136.title" = "Enjoyable beenden";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "Andere ausblenden";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; */
+"239.title" = "Zoom";
+
+/* Class = "NSWindow"; title = "Enjoyable"; ObjectID = "450"; */
+"450.title" = "Enjoyable";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "464"; */
+"464.title" = "Text Cell";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Create a new mapping"; ObjectID = "507"; */
+"507.ibShadowedToolTip" = "Neus Mapping erstellen";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Remove the selected mapping"; ObjectID = "511"; */
+"511.ibShadowedToolTip" = "Entferne markiertes Mapping";
+
+/* Class = "NSMenuItem"; title = "Enable"; ObjectID = "606"; */
+"606.title" = "Aktivieren";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "642"; */
+"642.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Do nothing"; ObjectID = "657"; */
+"657.title" = "Nichts tun";
+
+/* Class = "NSButtonCell"; title = "Press a key:"; ObjectID = "658"; */
+"658.title" = "Drücke eine Taste:";
+
+/* Class = "NSButtonCell"; title = "Radio"; ObjectID = "659"; */
+"659.title" = "Radio";
+
+/* Class = "NSButtonCell"; title = "Switch to mapping:"; ObjectID = "699"; */
+"699.title" = "Schalte zu Mapping:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "702"; */
+"702.title" = "OtherViews";
+
+/* Class = "NSTextFieldCell"; placeholderString = "No input selected"; ObjectID = "707"; */
+"707.placeholderString" = "Keine Eingabe ausgewählt";
+
+/* Class = "NSButtonCell"; title = "Move the mouse:"; ObjectID = "733"; */
+"733.title" = "Bewege die Maus:";
+
+/* Class = "NSButtonCell"; title = "Press a mouse button:"; ObjectID = "734"; */
+"734.title" = "Drücke eine Maustaste:";
+
+/* Class = "NSButtonCell"; title = "Scroll the mouse:"; ObjectID = "735"; */
+"735.title" = "Scrolle mit der Maus:";
+
+/* Class = "NSSegmentedCell"; 745.ibShadowedLabels[0] = "Left"; ObjectID = "745"; */
+"745.ibShadowedLabels[0]" = "Links";
+
+/* Class = "NSSegmentedCell"; 745.ibShadowedLabels[1] = "Center"; ObjectID = "745"; */
+"745.ibShadowedLabels[1]" = "Zentrieren";
+
+/* Class = "NSSegmentedCell"; 745.ibShadowedLabels[2] = "Right"; ObjectID = "745"; */
+"745.ibShadowedLabels[2]" = "Rechts";
+
+/* Class = "NSSegmentedCell"; 745.ibShadowedLabels[3] = "4"; ObjectID = "745"; */
+"745.ibShadowedLabels[3]" = "4";
+
+/* Class = "NSSegmentedCell"; 745.ibShadowedLabels[4] = "5"; ObjectID = "745"; */
+"745.ibShadowedLabels[4]" = "5";
+
+/* Class = "NSSegmentedCell"; 750.ibShadowedLabels[0] = "←"; ObjectID = "750"; */
+"750.ibShadowedLabels[0]" = "←";
+
+/* Class = "NSSegmentedCell"; 750.ibShadowedLabels[1] = "→"; ObjectID = "750"; */
+"750.ibShadowedLabels[1]" = "→";
+
+/* Class = "NSSegmentedCell"; 750.ibShadowedLabels[2] = "↑"; ObjectID = "750"; */
+"750.ibShadowedLabels[2]" = "↑";
+
+/* Class = "NSSegmentedCell"; 750.ibShadowedLabels[3] = "↓"; ObjectID = "750"; */
+"750.ibShadowedLabels[3]" = "↓";
+
+/* Class = "NSSegmentedCell"; 755.ibShadowedLabels[0] = "←"; ObjectID = "755"; */
+"755.ibShadowedLabels[0]" = "←";
+
+/* Class = "NSSegmentedCell"; 755.ibShadowedLabels[1] = "→"; ObjectID = "755"; */
+"755.ibShadowedLabels[1]" = "→";
+
+/* Class = "NSSegmentedCell"; 755.ibShadowedLabels[2] = "↑"; ObjectID = "755"; */
+"755.ibShadowedLabels[2]" = "↑";
+
+/* Class = "NSSegmentedCell"; 755.ibShadowedLabels[3] = "↓"; ObjectID = "755"; */
+"755.ibShadowedLabels[3]" = "↓";
+
+/* Class = "NSMenuItem"; title = "Show List"; ObjectID = "810"; */
+"810.title" = "Zeige Liste";
+
+/* Class = "NSMenuItem"; title = "Export…"; ObjectID = "813"; */
+"813.title" = "Exportieren…";
+
+/* Class = "NSMenuItem"; title = "Import…"; ObjectID = "814"; */
+"814.title" = "Importieren…";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Change the active mapping"; ObjectID = "835"; */
+"835.ibShadowedToolTip" = "Ändere das aktive Mapping";
+
+/* Class = "NSButtonCell"; title = "(default)"; ObjectID = "836"; */
+"836.title" = "(Standard)";
+
+/* Class = "NSToolbarItem"; label = "Mapping Selector"; ObjectID = "837"; */
+"837.label" = "Mapping Wähler";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Mapping Selector"; ObjectID = "837"; */
+"837.paletteLabel" = "Mapping Wähler";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Enable mapped actions"; ObjectID = "872"; */
+"872.ibShadowedToolTip" = "Aktiviere gemappte Aktionen";
+
+/* Class = "NSToolbarItem"; label = "Enabled"; ObjectID = "874"; */
+"874.label" = "Aktiviert";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Enabled"; ObjectID = "874"; */
+"874.paletteLabel" = "Aktiviert";
+
+/* Class = "NSSlider"; ibShadowedToolTip = "Maximum mouse speed"; ObjectID = "883"; */
+"883.ibShadowedToolTip" = "Höchste Mausgeschwindigkeit";
+
+/* Class = "NSSlider"; ibShadowedToolTip = "Mouse scroll speed"; ObjectID = "887"; */
+"887.ibShadowedToolTip" = "Maus Scrollgeschwindigkeit";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Move the selected mapping up the list"; ObjectID = "893"; */
+"893.ibShadowedToolTip" = "Bewege das ausgewählte Mapping nach oben";
+
+/* Class = "NSButtonCell"; title = "⬆"; ObjectID = "894"; */
+"894.title" = "⬆";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Move the selected mapping down the list"; ObjectID = "896"; */
+"896.ibShadowedToolTip" = "Bewege das markierte Mapping nach unten";
+
+/* Class = "NSButtonCell"; title = "⬇"; ObjectID = "897"; */
+"897.title" = "⬇";
+
+/* Class = "NSButtonCell"; title = "No input devices were found.\n\nConnect a device to begin mapping."; ObjectID = "914"; */
+"914.title" = "Es wurde kein Eingabegerät gefunden.\n\nVerbinde ein Gerät um mit dem Mapping zu beginnen.";
+
+/* Class = "NSMenuItem"; title = "Enable"; ObjectID = "919"; */
+"919.title" = "Aktivieren";
+
+/* Class = "NSMenuItem"; title = "Show Enjoyable"; ObjectID = "926"; */
+"926.title" = "Enjoyable zeigen";
+
+/* Class = "NSMenuItem"; title = "Quit Enjoyable"; ObjectID = "936"; */
+"936.title" = "Enjoyable beenden";
+
+/* Class = "NSMenuItem"; title = "Hide From Dock"; ObjectID = "940"; */
+"940.title" = "Aus dem Dock ausblenden";
+
+/* Class = "NSButtonCell"; title = "Smooth"; ObjectID = "947"; */
+"947.title" = "Weich";
+
+/* Class = "NSMenuItem"; title = "New…"; ObjectID = "970"; */
+"970.title" = "Neu…";
+
+/* Class = "NSButtonCell"; title = "Input is currently disabled.\n\nSwitch back to re-enable input."; ObjectID = "975"; */
+"975.title" = "Die Eingabe ist derzeit deaktiviert.\n\nSchalte um damit sie wieder aktiviert wird.";
+
+/* Class = "NSButtonCell"; title = "Unknown Mapping"; ObjectID = "1021"; */
+"1021.title" = "Unbekanntes Mapping";
+
+/* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "lam-hX-jkC"; */
+"lam-hX-jkC.title" = "Auf Updates prüfen ...";
+

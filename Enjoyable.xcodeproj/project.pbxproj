@@ -3,201 +3,121 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 77;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2A8E10692E747CED00E36BCD /* Publish */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2A8E106A2E747CED00E36BCD /* Build configuration list for PBXAggregateTarget "Publish" */;
+			buildPhases = (
+				2A8E106D2E747D0000E36BCD /* Publish */,
+			);
+			dependencies = (
+			);
+			name = Publish;
+			packageProductDependencies = (
+			);
+			productName = Publish;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D594BEFF0FAE7397007A85F2 /* IOKit.framework */; };
-		EE1F3CEA16EF4182008C6426 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE1F3CE816EF4182008C6426 /* Localizable.strings */; };
-		EE35A6E417BBCC9500413995 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE35A6E317BBCC9500413995 /* CoreVideo.framework */; };
-		EE3D897A16EA7EFC00596D1F /* Status Menu Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3D897916EA7EFC00596D1F /* Status Menu Icon@2x.png */; };
-		EE3D897C16EA806E00596D1F /* Status Menu Icon Disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3D897B16EA806E00596D1F /* Status Menu Icon Disabled@2x.png */; };
-		EE3D897F16EA817E00596D1F /* Status Menu Icon Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3D897D16EA817E00596D1F /* Status Menu Icon Disabled.png */; };
-		EE3D898016EA817E00596D1F /* Status Menu Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3D897E16EA817E00596D1F /* Status Menu Icon.png */; };
-		EE48263016F6680D001B0C64 /* NSProcessInfo+Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = EE48262F16F6680D001B0C64 /* NSProcessInfo+Debugging.m */; };
-		EE52145C16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = EE52145B16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.m */; };
-		EE52145F16F404D500E3C574 /* NJDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE52145E16F404D500E3C574 /* NJDeviceViewController.m */; };
-		EE6A122E16E8F46300EDBD32 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = EE6A122D16E8F46300EDBD32 /* Icon.icns */; };
-		EE83ACEC16F545EA00083E94 /* NJMappingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE83ACEB16F545EA00083E94 /* NJMappingsViewController.m */; };
-		EE8455DD16F0E46B00F32A01 /* NSRunningApplication+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8455DC16F0E46B00F32A01 /* NSRunningApplication+LoginItem.m */; };
-		EED4CE6E16ED692400C65AA8 /* NJMappingMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED4CE6D16ED692400C65AA8 /* NJMappingMenuController.m */; };
-		EEE703DC16F089FE002FDD69 /* NJHIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE703DB16F089FE002FDD69 /* NJHIDManager.m */; };
-		EEE703DE16F0B3F6002FDD69 /* NJInputPathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE703DD16F0B3F6002FDD69 /* NJInputPathElement.m */; };
-		EEE73B1616EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE73B1516EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.m */; };
-		EEF17D1916E8E21A00D7DC4D /* com.yukkurigames.Enjoyable.mapping.icns in Resources */ = {isa = PBXBuildFile; fileRef = EEF17D1716E8E21A00D7DC4D /* com.yukkurigames.Enjoyable.mapping.icns */; };
-		EEF17D1F16E8E23A00D7DC4D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEF17D1B16E8E23A00D7DC4D /* InfoPlist.strings */; };
-		EEF17D2016E8E23A00D7DC4D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF17D1D16E8E23A00D7DC4D /* MainMenu.xib */; };
-		EEF17D2216E8E24400D7DC4D /* Help in Resources */ = {isa = PBXBuildFile; fileRef = EEF17D2116E8E24400D7DC4D /* Help */; };
-		EEF17D2616E8E2D800D7DC4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D2416E8E2D800D7DC4D /* main.m */; };
-		EEF17D3316E8E2E100D7DC4D /* NSError+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D2816E8E2E100D7DC4D /* NSError+Description.m */; };
-		EEF17D3416E8E2E100D7DC4D /* NSFileManager+UniqueNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D2A16E8E2E100D7DC4D /* NSFileManager+UniqueNames.m */; };
-		EEF17D3516E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D2C16E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.m */; };
-		EEF17D3616E8E2E100D7DC4D /* NSMutableArray+MoveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D2E16E8E2E100D7DC4D /* NSMutableArray+MoveObject.m */; };
-		EEF17D3716E8E2E100D7DC4D /* NSString+FixFilename.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D3016E8E2E100D7DC4D /* NSString+FixFilename.m */; };
-		EEF17D3816E8E2E100D7DC4D /* NSView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D3216E8E2E100D7DC4D /* NSView+FirstResponder.m */; };
-		EEF17D5C16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D3A16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m */; };
-		EEF17D5D16E8E2EF00D7DC4D /* NJDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D3C16E8E2EF00D7DC4D /* NJDevice.m */; };
-		EEF17D5E16E8E2EF00D7DC4D /* NJInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D3E16E8E2EF00D7DC4D /* NJInputController.m */; };
-		EEF17D5F16E8E2EF00D7DC4D /* NJInput.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4016E8E2EF00D7DC4D /* NJInput.m */; };
-		EEF17D6016E8E2EF00D7DC4D /* NJInputAnalog.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4216E8E2EF00D7DC4D /* NJInputAnalog.m */; };
-		EEF17D6116E8E2EF00D7DC4D /* NJInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4416E8E2EF00D7DC4D /* NJInputButton.m */; };
-		EEF17D6216E8E2EF00D7DC4D /* NJInputHat.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4616E8E2EF00D7DC4D /* NJInputHat.m */; };
-		EEF17D6316E8E2EF00D7DC4D /* NJKeyInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4916E8E2EF00D7DC4D /* NJKeyInputField.m */; };
-		EEF17D6416E8E2EF00D7DC4D /* NJMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4B16E8E2EF00D7DC4D /* NJMapping.m */; };
-		EEF17D6616E8E2EF00D7DC4D /* NJOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D4F16E8E2EF00D7DC4D /* NJOutput.m */; };
-		EEF17D6716E8E2EF00D7DC4D /* NJOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5116E8E2EF00D7DC4D /* NJOutputViewController.m */; };
-		EEF17D6816E8E2EF00D7DC4D /* NJOutputKeyPress.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5316E8E2EF00D7DC4D /* NJOutputKeyPress.m */; };
-		EEF17D6916E8E2EF00D7DC4D /* NJOutputMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5516E8E2EF00D7DC4D /* NJOutputMapping.m */; };
-		EEF17D6A16E8E2EF00D7DC4D /* NJOutputMouseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5716E8E2EF00D7DC4D /* NJOutputMouseButton.m */; };
-		EEF17D6B16E8E2EF00D7DC4D /* NJOutputMouseMove.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5916E8E2EF00D7DC4D /* NJOutputMouseMove.m */; };
-		EEF17D6C16E8E2EF00D7DC4D /* NJOutputMouseScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF17D5B16E8E2EF00D7DC4D /* NJOutputMouseScroll.m */; };
+		2A089FEE2E7459FA0002D255 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A089FED2E7459FA0002D255 /* ServiceManagement.framework */; };
+		2A8E10172E747BDE00E36BCD /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A8E10162E747BDE00E36BCD /* Sparkle */; };
+		2A8E11EF2E75710200E36BCD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E11EE2E75710200E36BCD /* IOKit.framework */; };
+		2A8E11F12E75710A00E36BCD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E11F02E75710A00E36BCD /* CoreVideo.framework */; };
+		2A8E11F32E75711100E36BCD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E11F22E75711100E36BCD /* Cocoa.framework */; };
+		2A8E11F52E75711800E36BCD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E11F42E75711800E36BCD /* AppKit.framework */; };
+		2A8E11F72E75712000E36BCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E11F62E75712000E36BCD /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EED4CE7416EE0E6400C65AA8 /* Copy Sparkle Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Sparkle Framework";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A089FED2E7459FA0002D255 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		2A8E11EE2E75710200E36BCD /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		2A8E11F02E75710A00E36BCD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2A8E11F22E75711100E36BCD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2A8E11F42E75711800E36BCD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2A8E11F62E75712000E36BCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D1107320486CEB800E47090 /* Enjoyable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoyable.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D594BEFF0FAE7397007A85F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		EE1F3CE916EF4182008C6426 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EE35A6E317BBCC9500413995 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		EE3D897916EA7EFC00596D1F /* Status Menu Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Menu Icon@2x.png"; path = "Resources/Status Menu Icon@2x.png"; sourceTree = "<group>"; };
-		EE3D897B16EA806E00596D1F /* Status Menu Icon Disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Menu Icon Disabled@2x.png"; path = "Resources/Status Menu Icon Disabled@2x.png"; sourceTree = "<group>"; };
-		EE3D897D16EA817E00596D1F /* Status Menu Icon Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Menu Icon Disabled.png"; path = "Resources/Status Menu Icon Disabled.png"; sourceTree = "<group>"; };
-		EE3D897E16EA817E00596D1F /* Status Menu Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Menu Icon.png"; path = "Resources/Status Menu Icon.png"; sourceTree = "<group>"; };
-		EE48262E16F6680D001B0C64 /* NSProcessInfo+Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSProcessInfo+Debugging.h"; path = "Categories/NSProcessInfo+Debugging.h"; sourceTree = "<group>"; };
-		EE48262F16F6680D001B0C64 /* NSProcessInfo+Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSProcessInfo+Debugging.m"; path = "Categories/NSProcessInfo+Debugging.m"; sourceTree = "<group>"; };
-		EE52145A16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSOutlineView+ItemAccessors.h"; path = "Categories/NSOutlineView+ItemAccessors.h"; sourceTree = "<group>"; };
-		EE52145B16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSOutlineView+ItemAccessors.m"; path = "Categories/NSOutlineView+ItemAccessors.m"; sourceTree = "<group>"; };
-		EE52145D16F404D500E3C574 /* NJDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJDeviceViewController.h; path = Classes/NJDeviceViewController.h; sourceTree = "<group>"; };
-		EE52145E16F404D500E3C574 /* NJDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJDeviceViewController.m; path = Classes/NJDeviceViewController.m; sourceTree = "<group>"; };
-		EE6A122D16E8F46300EDBD32 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
-		EE83ACEA16F545EA00083E94 /* NJMappingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJMappingsViewController.h; path = Classes/NJMappingsViewController.h; sourceTree = "<group>"; };
-		EE83ACEB16F545EA00083E94 /* NJMappingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJMappingsViewController.m; path = Classes/NJMappingsViewController.m; sourceTree = "<group>"; };
-		EE8455DB16F0E46B00F32A01 /* NSRunningApplication+LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSRunningApplication+LoginItem.h"; path = "Categories/NSRunningApplication+LoginItem.h"; sourceTree = "<group>"; };
-		EE8455DC16F0E46B00F32A01 /* NSRunningApplication+LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSRunningApplication+LoginItem.m"; path = "Categories/NSRunningApplication+LoginItem.m"; sourceTree = "<group>"; };
-		EED4CE6C16ED692400C65AA8 /* NJMappingMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJMappingMenuController.h; path = Classes/NJMappingMenuController.h; sourceTree = "<group>"; };
-		EED4CE6D16ED692400C65AA8 /* NJMappingMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJMappingMenuController.m; path = Classes/NJMappingMenuController.m; sourceTree = "<group>"; };
-		EEE703DA16F089FE002FDD69 /* NJHIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJHIDManager.h; path = Classes/NJHIDManager.h; sourceTree = "<group>"; };
-		EEE703DB16F089FE002FDD69 /* NJHIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJHIDManager.m; path = Classes/NJHIDManager.m; sourceTree = "<group>"; };
-		EEE703DD16F0B3F6002FDD69 /* NJInputPathElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInputPathElement.m; path = Classes/NJInputPathElement.m; sourceTree = "<group>"; };
-		EEE73B1416EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSRunningApplication+NJPossibleNames.h"; path = "Categories/NSRunningApplication+NJPossibleNames.h"; sourceTree = "<group>"; };
-		EEE73B1516EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSRunningApplication+NJPossibleNames.m"; path = "Categories/NSRunningApplication+NJPossibleNames.m"; sourceTree = "<group>"; };
-		EEF17D1716E8E21A00D7DC4D /* com.yukkurigames.Enjoyable.mapping.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = com.yukkurigames.Enjoyable.mapping.icns; path = Resources/com.yukkurigames.Enjoyable.mapping.icns; sourceTree = "<group>"; };
-		EEF17D1C16E8E23A00D7DC4D /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EEF17D1E16E8E23A00D7DC4D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		EEF17D2116E8E24400D7DC4D /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Help; path = Resources/Help; sourceTree = "<group>"; };
-		EEF17D2316E8E2D800D7DC4D /* Enjoyable_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enjoyable_Prefix.pch; path = "Other Sources/Enjoyable_Prefix.pch"; sourceTree = "<group>"; };
-		EEF17D2416E8E2D800D7DC4D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Other Sources/main.m"; sourceTree = "<group>"; };
-		EEF17D2516E8E2D800D7DC4D /* NJEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJEvents.h; path = "Other Sources/NJEvents.h"; sourceTree = "<group>"; };
-		EEF17D2716E8E2E100D7DC4D /* NSError+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+Description.h"; path = "Categories/NSError+Description.h"; sourceTree = "<group>"; };
-		EEF17D2816E8E2E100D7DC4D /* NSError+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+Description.m"; path = "Categories/NSError+Description.m"; sourceTree = "<group>"; };
-		EEF17D2916E8E2E100D7DC4D /* NSFileManager+UniqueNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+UniqueNames.h"; path = "Categories/NSFileManager+UniqueNames.h"; sourceTree = "<group>"; };
-		EEF17D2A16E8E2E100D7DC4D /* NSFileManager+UniqueNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+UniqueNames.m"; path = "Categories/NSFileManager+UniqueNames.m"; sourceTree = "<group>"; };
-		EEF17D2B16E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMenu+RepresentedObjectAccessors.h"; path = "Categories/NSMenu+RepresentedObjectAccessors.h"; sourceTree = "<group>"; };
-		EEF17D2C16E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMenu+RepresentedObjectAccessors.m"; path = "Categories/NSMenu+RepresentedObjectAccessors.m"; sourceTree = "<group>"; };
-		EEF17D2D16E8E2E100D7DC4D /* NSMutableArray+MoveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+MoveObject.h"; path = "Categories/NSMutableArray+MoveObject.h"; sourceTree = "<group>"; };
-		EEF17D2E16E8E2E100D7DC4D /* NSMutableArray+MoveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+MoveObject.m"; path = "Categories/NSMutableArray+MoveObject.m"; sourceTree = "<group>"; };
-		EEF17D2F16E8E2E100D7DC4D /* NSString+FixFilename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FixFilename.h"; path = "Categories/NSString+FixFilename.h"; sourceTree = "<group>"; };
-		EEF17D3016E8E2E100D7DC4D /* NSString+FixFilename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FixFilename.m"; path = "Categories/NSString+FixFilename.m"; sourceTree = "<group>"; };
-		EEF17D3116E8E2E100D7DC4D /* NSView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+FirstResponder.h"; path = "Categories/NSView+FirstResponder.h"; sourceTree = "<group>"; };
-		EEF17D3216E8E2E100D7DC4D /* NSView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+FirstResponder.m"; path = "Categories/NSView+FirstResponder.m"; sourceTree = "<group>"; };
-		EEF17D3916E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnjoyableApplicationDelegate.h; path = Classes/EnjoyableApplicationDelegate.h; sourceTree = "<group>"; };
-		EEF17D3A16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnjoyableApplicationDelegate.m; path = Classes/EnjoyableApplicationDelegate.m; sourceTree = "<group>"; };
-		EEF17D3B16E8E2EF00D7DC4D /* NJDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJDevice.h; path = Classes/NJDevice.h; sourceTree = "<group>"; };
-		EEF17D3C16E8E2EF00D7DC4D /* NJDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJDevice.m; path = Classes/NJDevice.m; sourceTree = "<group>"; };
-		EEF17D3D16E8E2EF00D7DC4D /* NJInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInputController.h; path = Classes/NJInputController.h; sourceTree = "<group>"; };
-		EEF17D3E16E8E2EF00D7DC4D /* NJInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInputController.m; path = Classes/NJInputController.m; sourceTree = "<group>"; };
-		EEF17D3F16E8E2EF00D7DC4D /* NJInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInput.h; path = Classes/NJInput.h; sourceTree = "<group>"; };
-		EEF17D4016E8E2EF00D7DC4D /* NJInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInput.m; path = Classes/NJInput.m; sourceTree = "<group>"; };
-		EEF17D4116E8E2EF00D7DC4D /* NJInputAnalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInputAnalog.h; path = Classes/NJInputAnalog.h; sourceTree = "<group>"; };
-		EEF17D4216E8E2EF00D7DC4D /* NJInputAnalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInputAnalog.m; path = Classes/NJInputAnalog.m; sourceTree = "<group>"; };
-		EEF17D4316E8E2EF00D7DC4D /* NJInputButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInputButton.h; path = Classes/NJInputButton.h; sourceTree = "<group>"; };
-		EEF17D4416E8E2EF00D7DC4D /* NJInputButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInputButton.m; path = Classes/NJInputButton.m; sourceTree = "<group>"; };
-		EEF17D4516E8E2EF00D7DC4D /* NJInputHat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInputHat.h; path = Classes/NJInputHat.h; sourceTree = "<group>"; };
-		EEF17D4616E8E2EF00D7DC4D /* NJInputHat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJInputHat.m; path = Classes/NJInputHat.m; sourceTree = "<group>"; };
-		EEF17D4716E8E2EF00D7DC4D /* NJInputPathElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJInputPathElement.h; path = Classes/NJInputPathElement.h; sourceTree = "<group>"; };
-		EEF17D4816E8E2EF00D7DC4D /* NJKeyInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJKeyInputField.h; path = Classes/NJKeyInputField.h; sourceTree = "<group>"; };
-		EEF17D4916E8E2EF00D7DC4D /* NJKeyInputField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJKeyInputField.m; path = Classes/NJKeyInputField.m; sourceTree = "<group>"; };
-		EEF17D4A16E8E2EF00D7DC4D /* NJMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJMapping.h; path = Classes/NJMapping.h; sourceTree = "<group>"; };
-		EEF17D4B16E8E2EF00D7DC4D /* NJMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJMapping.m; path = Classes/NJMapping.m; sourceTree = "<group>"; };
-		EEF17D4E16E8E2EF00D7DC4D /* NJOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutput.h; path = Classes/NJOutput.h; sourceTree = "<group>"; };
-		EEF17D4F16E8E2EF00D7DC4D /* NJOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutput.m; path = Classes/NJOutput.m; sourceTree = "<group>"; };
-		EEF17D5016E8E2EF00D7DC4D /* NJOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputViewController.h; path = Classes/NJOutputViewController.h; sourceTree = "<group>"; };
-		EEF17D5116E8E2EF00D7DC4D /* NJOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputViewController.m; path = Classes/NJOutputViewController.m; sourceTree = "<group>"; };
-		EEF17D5216E8E2EF00D7DC4D /* NJOutputKeyPress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputKeyPress.h; path = Classes/NJOutputKeyPress.h; sourceTree = "<group>"; };
-		EEF17D5316E8E2EF00D7DC4D /* NJOutputKeyPress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputKeyPress.m; path = Classes/NJOutputKeyPress.m; sourceTree = "<group>"; };
-		EEF17D5416E8E2EF00D7DC4D /* NJOutputMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputMapping.h; path = Classes/NJOutputMapping.h; sourceTree = "<group>"; };
-		EEF17D5516E8E2EF00D7DC4D /* NJOutputMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputMapping.m; path = Classes/NJOutputMapping.m; sourceTree = "<group>"; };
-		EEF17D5616E8E2EF00D7DC4D /* NJOutputMouseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputMouseButton.h; path = Classes/NJOutputMouseButton.h; sourceTree = "<group>"; };
-		EEF17D5716E8E2EF00D7DC4D /* NJOutputMouseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputMouseButton.m; path = Classes/NJOutputMouseButton.m; sourceTree = "<group>"; };
-		EEF17D5816E8E2EF00D7DC4D /* NJOutputMouseMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputMouseMove.h; path = Classes/NJOutputMouseMove.h; sourceTree = "<group>"; };
-		EEF17D5916E8E2EF00D7DC4D /* NJOutputMouseMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputMouseMove.m; path = Classes/NJOutputMouseMove.m; sourceTree = "<group>"; };
-		EEF17D5A16E8E2EF00D7DC4D /* NJOutputMouseScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NJOutputMouseScroll.h; path = Classes/NJOutputMouseScroll.h; sourceTree = "<group>"; };
-		EEF17D5B16E8E2EF00D7DC4D /* NJOutputMouseScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputMouseScroll.m; path = Classes/NJOutputMouseScroll.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2AA8494B2E7583E500570CBF /* Exceptions for "Enjoyable" folder in "Enjoyable" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Localizable.strings",
+				"/Localized: MainMenu.xib",
+				Assets.xcassets,
+				"Categories/NSError+Description.m",
+				"Categories/NSFileManager+UniqueNames.m",
+				"Categories/NSMenu+RepresentedObjectAccessors.m",
+				"Categories/NSMutableArray+MoveObject.m",
+				"Categories/NSOutlineView+ItemAccessors.m",
+				"Categories/NSProcessInfo+Debugging.m",
+				"Categories/NSRunningApplication+LoginItem.m",
+				"Categories/NSRunningApplication+NJPossibleNames.m",
+				"Categories/NSString+FixFilename.m",
+				"Categories/NSView+FirstResponder.m",
+				Classes/EnjoyableApplicationDelegate.m,
+				Classes/NJDevice.m,
+				Classes/NJDeviceViewController.m,
+				Classes/NJHIDManager.m,
+				Classes/NJInput.m,
+				Classes/NJInputAnalog.m,
+				Classes/NJInputButton.m,
+				Classes/NJInputController.m,
+				Classes/NJInputHat.m,
+				Classes/NJInputPathElement.m,
+				Classes/NJKeyInputField.m,
+				Classes/NJMapping.m,
+				Classes/NJMappingMenuController.m,
+				Classes/NJMappingsViewController.m,
+				Classes/NJOutput.m,
+				Classes/NJOutputKeyPress.m,
+				Classes/NJOutputMapping.m,
+				Classes/NJOutputMouseButton.m,
+				Classes/NJOutputMouseMove.m,
+				Classes/NJOutputMouseScroll.m,
+				Classes/NJOutputViewController.m,
+				de.slsoft.Enjoyable.mapping.icns,
+				enjoyable.html,
+				Info.plist,
+				"Other Sources/main.m",
+			);
+			target = 8D1107260486CEB800E47090 /* Enjoyable */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2AA849452E7583AB00570CBF /* Enjoyable */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2AA8494B2E7583E500570CBF /* Exceptions for "Enjoyable" folder in "Enjoyable" target */,
+			);
+			path = Enjoyable;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE35A6E417BBCC9500413995 /* CoreVideo.framework in Frameworks */,
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */,
+				2A8E10172E747BDE00E36BCD /* Sparkle in Frameworks */,
+				2A8E11F32E75711100E36BCD /* Cocoa.framework in Frameworks */,
+				2A089FEE2E7459FA0002D255 /* ServiceManagement.framework in Frameworks */,
+				2A8E11F52E75711800E36BCD /* AppKit.framework in Frameworks */,
+				2A8E11EF2E75710200E36BCD /* IOKit.framework in Frameworks */,
+				2A8E11F72E75712000E36BCD /* Foundation.framework in Frameworks */,
+				2A8E11F12E75710A00E36BCD /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EEF17D3916E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.h */,
-				EEF17D3A16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m */,
-				EEDB86A216FA4C42000E91C3 /* Input */,
-				EEDB86A316FA4C5C000E91C3 /* Output */,
-				EEDB86A516FA4CE4000E91C3 /* Views */,
-				EEDB86A416FA4CD1000E91C3 /* View Controllers */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D594BEFF0FAE7397007A85F2 /* IOKit.framework */,
-				EE35A6E317BBCC9500413995 /* CoreVideo.framework */,
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,146 +129,24 @@
 		29B97314FDCFA39411CA2CEA /* Enjoy */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107310486CEB800E47090 /* Info.plist */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				EE1D5F8B16E403D600749C36 /* Categories */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				2AA849452E7583AB00570CBF /* Enjoyable */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = Enjoy;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				EEF17D2316E8E2D800D7DC4D /* Enjoyable_Prefix.pch */,
-				EEF17D2416E8E2D800D7DC4D /* main.m */,
-				EEF17D2516E8E2D800D7DC4D /* NJEvents.h */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EE3D897D16EA817E00596D1F /* Status Menu Icon Disabled.png */,
-				EE3D897E16EA817E00596D1F /* Status Menu Icon.png */,
-				EE3D897B16EA806E00596D1F /* Status Menu Icon Disabled@2x.png */,
-				EE3D897916EA7EFC00596D1F /* Status Menu Icon@2x.png */,
-				EE6A122D16E8F46300EDBD32 /* Icon.icns */,
-				EEF17D2116E8E24400D7DC4D /* Help */,
-				EE1F3CE816EF4182008C6426 /* Localizable.strings */,
-				EEF17D1B16E8E23A00D7DC4D /* InfoPlist.strings */,
-				EEF17D1D16E8E23A00D7DC4D /* MainMenu.xib */,
-				EEF17D1716E8E21A00D7DC4D /* com.yukkurigames.Enjoyable.mapping.icns */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				2A8E11F62E75712000E36BCD /* Foundation.framework */,
+				2A8E11F42E75711800E36BCD /* AppKit.framework */,
+				2A8E11F22E75711100E36BCD /* Cocoa.framework */,
+				2A8E11F02E75710A00E36BCD /* CoreVideo.framework */,
+				2A8E11EE2E75710200E36BCD /* IOKit.framework */,
+				2A089FED2E7459FA0002D255 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EE1D5F8B16E403D600749C36 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				EE8455DB16F0E46B00F32A01 /* NSRunningApplication+LoginItem.h */,
-				EE8455DC16F0E46B00F32A01 /* NSRunningApplication+LoginItem.m */,
-				EEF17D2716E8E2E100D7DC4D /* NSError+Description.h */,
-				EEF17D2816E8E2E100D7DC4D /* NSError+Description.m */,
-				EEF17D2916E8E2E100D7DC4D /* NSFileManager+UniqueNames.h */,
-				EEF17D2A16E8E2E100D7DC4D /* NSFileManager+UniqueNames.m */,
-				EEF17D2B16E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.h */,
-				EEF17D2C16E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.m */,
-				EEF17D2D16E8E2E100D7DC4D /* NSMutableArray+MoveObject.h */,
-				EEF17D2E16E8E2E100D7DC4D /* NSMutableArray+MoveObject.m */,
-				EEF17D2F16E8E2E100D7DC4D /* NSString+FixFilename.h */,
-				EEF17D3016E8E2E100D7DC4D /* NSString+FixFilename.m */,
-				EEF17D3116E8E2E100D7DC4D /* NSView+FirstResponder.h */,
-				EEF17D3216E8E2E100D7DC4D /* NSView+FirstResponder.m */,
-				EEE73B1416EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.h */,
-				EEE73B1516EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.m */,
-				EE52145A16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.h */,
-				EE52145B16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.m */,
-				EE48262E16F6680D001B0C64 /* NSProcessInfo+Debugging.h */,
-				EE48262F16F6680D001B0C64 /* NSProcessInfo+Debugging.m */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
-		EEDB86A216FA4C42000E91C3 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				EEE703DA16F089FE002FDD69 /* NJHIDManager.h */,
-				EEE703DB16F089FE002FDD69 /* NJHIDManager.m */,
-				EEF17D3D16E8E2EF00D7DC4D /* NJInputController.h */,
-				EEF17D3E16E8E2EF00D7DC4D /* NJInputController.m */,
-				EEF17D4716E8E2EF00D7DC4D /* NJInputPathElement.h */,
-				EEE703DD16F0B3F6002FDD69 /* NJInputPathElement.m */,
-				EEF17D4A16E8E2EF00D7DC4D /* NJMapping.h */,
-				EEF17D4B16E8E2EF00D7DC4D /* NJMapping.m */,
-				EEF17D3B16E8E2EF00D7DC4D /* NJDevice.h */,
-				EEF17D3C16E8E2EF00D7DC4D /* NJDevice.m */,
-				EEF17D3F16E8E2EF00D7DC4D /* NJInput.h */,
-				EEF17D4016E8E2EF00D7DC4D /* NJInput.m */,
-				EEF17D4116E8E2EF00D7DC4D /* NJInputAnalog.h */,
-				EEF17D4216E8E2EF00D7DC4D /* NJInputAnalog.m */,
-				EEF17D4316E8E2EF00D7DC4D /* NJInputButton.h */,
-				EEF17D4416E8E2EF00D7DC4D /* NJInputButton.m */,
-				EEF17D4516E8E2EF00D7DC4D /* NJInputHat.h */,
-				EEF17D4616E8E2EF00D7DC4D /* NJInputHat.m */,
-			);
-			name = Input;
-			sourceTree = "<group>";
-		};
-		EEDB86A316FA4C5C000E91C3 /* Output */ = {
-			isa = PBXGroup;
-			children = (
-				EEF17D4E16E8E2EF00D7DC4D /* NJOutput.h */,
-				EEF17D4F16E8E2EF00D7DC4D /* NJOutput.m */,
-				EEF17D5216E8E2EF00D7DC4D /* NJOutputKeyPress.h */,
-				EEF17D5316E8E2EF00D7DC4D /* NJOutputKeyPress.m */,
-				EEF17D5416E8E2EF00D7DC4D /* NJOutputMapping.h */,
-				EEF17D5516E8E2EF00D7DC4D /* NJOutputMapping.m */,
-				EEF17D5616E8E2EF00D7DC4D /* NJOutputMouseButton.h */,
-				EEF17D5716E8E2EF00D7DC4D /* NJOutputMouseButton.m */,
-				EEF17D5816E8E2EF00D7DC4D /* NJOutputMouseMove.h */,
-				EEF17D5916E8E2EF00D7DC4D /* NJOutputMouseMove.m */,
-				EEF17D5A16E8E2EF00D7DC4D /* NJOutputMouseScroll.h */,
-				EEF17D5B16E8E2EF00D7DC4D /* NJOutputMouseScroll.m */,
-			);
-			name = Output;
-			sourceTree = "<group>";
-		};
-		EEDB86A416FA4CD1000E91C3 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				EEF17D5016E8E2EF00D7DC4D /* NJOutputViewController.h */,
-				EEF17D5116E8E2EF00D7DC4D /* NJOutputViewController.m */,
-				EED4CE6C16ED692400C65AA8 /* NJMappingMenuController.h */,
-				EED4CE6D16ED692400C65AA8 /* NJMappingMenuController.m */,
-				EE52145D16F404D500E3C574 /* NJDeviceViewController.h */,
-				EE52145E16F404D500E3C574 /* NJDeviceViewController.m */,
-				EE83ACEA16F545EA00083E94 /* NJMappingsViewController.h */,
-				EE83ACEB16F545EA00083E94 /* NJMappingsViewController.m */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		EEDB86A516FA4CE4000E91C3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				EEF17D4816E8E2EF00D7DC4D /* NJKeyInputField.h */,
-				EEF17D4916E8E2EF00D7DC4D /* NJKeyInputField.m */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,12 +156,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoyable" */;
 			buildPhases = (
-				EE3D898416EAAE1600596D1F /* Increment build number */,
-				EED7E81616E7B547004A0BA4 /* Generate Help Index */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				EED4CE7416EE0E6400C65AA8 /* Copy Sparkle Framework */,
+				2A8E10132E7478D000E36BCD /* Prepare Build */,
 			);
 			buildRules = (
 			);
@@ -382,22 +178,34 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					2A8E10692E747CED00E36BCD = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = 4ATFWV7M4B;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoyable" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				Base,
+				en,
+				de,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Enjoy */;
+			packageReferences = (
+				2A8E0FBF2E74772D00E36BCD /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Enjoyable */,
+				2A8E10692E747CED00E36BCD /* Publish */,
 			);
 		};
 /* End PBXProject section */
@@ -407,49 +215,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF17D1916E8E21A00D7DC4D /* com.yukkurigames.Enjoyable.mapping.icns in Resources */,
-				EEF17D1F16E8E23A00D7DC4D /* InfoPlist.strings in Resources */,
-				EEF17D2016E8E23A00D7DC4D /* MainMenu.xib in Resources */,
-				EEF17D2216E8E24400D7DC4D /* Help in Resources */,
-				EE6A122E16E8F46300EDBD32 /* Icon.icns in Resources */,
-				EE3D897A16EA7EFC00596D1F /* Status Menu Icon@2x.png in Resources */,
-				EE3D897C16EA806E00596D1F /* Status Menu Icon Disabled@2x.png in Resources */,
-				EE3D897F16EA817E00596D1F /* Status Menu Icon Disabled.png in Resources */,
-				EE3D898016EA817E00596D1F /* Status Menu Icon.png in Resources */,
-				EE1F3CEA16EF4182008C6426 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EE3D898416EAAE1600596D1F /* Increment build number */ = {
+		2A8E10132E7478D000E36BCD /* Prepare Build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
-			name = "Increment build number";
+			name = "Prepare Build";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nplist=\"${PROJECT_DIR}/${INFOPLIST_FILE}\"\ndir=\"$(dirname \"$plist\")\"\n\n# Only increment the build number if source files have changed\nif [ -n \"$(find \"$dir\" \\! -path \"*xcuserdata*\" \\! -path \"*.git*\" \\! -name .DS_Store \\! -path \"*Website*\" -newer \"$plist\")\" ]; then\n    buildnum=$(/usr/libexec/Plistbuddy -c \"Print CFBundleVersion\" \"$plist\")\n    if [ -z \"$buildnum\" ]; then\n        echo \"No build number in $plist\"\n        exit 2\n    fi\n    buildnum=$(expr $buildnum + 1)\n    /usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"$plist\"\n    echo \"Incremented build number to $buildnum\"\nelse\n    echo \"Not incrementing build number as source files have not changed\"\nfi\n";
+			shellScript = "#!/bin/bash\n\n# Ermittelt den aktuellen Benutzer\nSYS_USER=$(id -un)\n\n# Prüfen, ob das Upload-Verzeichnis existiert, und Dateien vorbereiten\nUPLOAD_DIR=\"/Volumes/Homeshare/Xcode/enjoyable/upload\"\n\nif [ -d \"$UPLOAD_DIR\" ]; then\n    # HTML-Datei kopieren\n    \n    cp \"/Users/$SYS_USER/Documents/Xcode/enjoyable/Enjoyable/enjoyable.html\" \"$UPLOAD_DIR/\"\n    \n    # Codesignieren der App\n    codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\"\n    \n    # App als ZIP-Archiv erstellen\n    ditto -c -k --sequesterRsrc --keepParent \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"$UPLOAD_DIR/enjoyable.zip\"\nfi\n\n# Sicherstellen, dass keine alte Version der App auf dem Desktop existiert\nDESKTOP_APP=\"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nif [ -d \"$DESKTOP_APP\" ]; then\n    rm -rf \"$DESKTOP_APP\"\nfi\n\n# App auf den Desktop kopieren\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/\"\n\n# App auf dem Desktop erneut codesignieren\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"$DESKTOP_APP\"\n\n\n";
 		};
-		EED7E81616E7B547004A0BA4 /* Generate Help Index */ = {
+		2A8E106D2E747D0000E36BCD /* Publish */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
-			name = "Generate Help Index";
+			name = Publish;
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SOURCE_ROOT}/Resources/Help/Contents/Resources/English.lproj\nmake\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nbash /Volumes/Homeshare/Xcode/enjoyable/push.command\n\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -458,81 +264,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF17D2616E8E2D800D7DC4D /* main.m in Sources */,
-				EEF17D3316E8E2E100D7DC4D /* NSError+Description.m in Sources */,
-				EEF17D3416E8E2E100D7DC4D /* NSFileManager+UniqueNames.m in Sources */,
-				EEF17D3516E8E2E100D7DC4D /* NSMenu+RepresentedObjectAccessors.m in Sources */,
-				EEF17D3616E8E2E100D7DC4D /* NSMutableArray+MoveObject.m in Sources */,
-				EEF17D3716E8E2E100D7DC4D /* NSString+FixFilename.m in Sources */,
-				EEF17D3816E8E2E100D7DC4D /* NSView+FirstResponder.m in Sources */,
-				EEF17D5C16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m in Sources */,
-				EEF17D5D16E8E2EF00D7DC4D /* NJDevice.m in Sources */,
-				EEF17D5E16E8E2EF00D7DC4D /* NJInputController.m in Sources */,
-				EEF17D5F16E8E2EF00D7DC4D /* NJInput.m in Sources */,
-				EEF17D6016E8E2EF00D7DC4D /* NJInputAnalog.m in Sources */,
-				EEF17D6116E8E2EF00D7DC4D /* NJInputButton.m in Sources */,
-				EEF17D6216E8E2EF00D7DC4D /* NJInputHat.m in Sources */,
-				EEF17D6316E8E2EF00D7DC4D /* NJKeyInputField.m in Sources */,
-				EEF17D6416E8E2EF00D7DC4D /* NJMapping.m in Sources */,
-				EEF17D6616E8E2EF00D7DC4D /* NJOutput.m in Sources */,
-				EEF17D6716E8E2EF00D7DC4D /* NJOutputViewController.m in Sources */,
-				EEF17D6816E8E2EF00D7DC4D /* NJOutputKeyPress.m in Sources */,
-				EEF17D6916E8E2EF00D7DC4D /* NJOutputMapping.m in Sources */,
-				EEF17D6A16E8E2EF00D7DC4D /* NJOutputMouseButton.m in Sources */,
-				EEF17D6B16E8E2EF00D7DC4D /* NJOutputMouseMove.m in Sources */,
-				EEF17D6C16E8E2EF00D7DC4D /* NJOutputMouseScroll.m in Sources */,
-				EEE73B1616EA42E5009D9D99 /* NSRunningApplication+NJPossibleNames.m in Sources */,
-				EED4CE6E16ED692400C65AA8 /* NJMappingMenuController.m in Sources */,
-				EEE703DC16F089FE002FDD69 /* NJHIDManager.m in Sources */,
-				EEE703DE16F0B3F6002FDD69 /* NJInputPathElement.m in Sources */,
-				EE8455DD16F0E46B00F32A01 /* NSRunningApplication+LoginItem.m in Sources */,
-				EE52145C16F3E8BD00E3C574 /* NSOutlineView+ItemAccessors.m in Sources */,
-				EE52145F16F404D500E3C574 /* NJDeviceViewController.m in Sources */,
-				EE83ACEC16F545EA00083E94 /* NJMappingsViewController.m in Sources */,
-				EE48263016F6680D001B0C64 /* NSProcessInfo+Debugging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		EE1F3CE816EF4182008C6426 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE1F3CE916EF4182008C6426 /* English */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		EEF17D1B16E8E23A00D7DC4D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEF17D1C16E8E23A00D7DC4D /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		EEF17D1D16E8E23A00D7DC4D /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEF17D1E16E8E23A00D7DC4D /* English */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
+		2A8E106B2E747CED00E36BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A8E106C2E747CED00E36BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 130;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -542,14 +312,22 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/Enjoyable_Prefix.pch";
+				GCC_PREFIX_HEADER = "Enjoyable/Other Sources/Enjoyable_Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Enjoyable/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
+				MARKETING_VERSION = 1.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.slsoft.Enjoyable;
 				PRODUCT_NAME = Enjoyable;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -557,12 +335,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 130;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -570,20 +353,29 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/Enjoyable_Prefix.pch";
+				GCC_PREFIX_HEADER = "Enjoyable/Other Sources/Enjoyable_Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Enjoyable/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
+				MARKETING_VERSION = 1.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.slsoft.Enjoyable;
 				PRODUCT_NAME = Enjoyable;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -619,17 +411,18 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
+				ONLY_ACTIVE_ARCH = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -663,16 +456,26 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
+				ONLY_ACTIVE_ARCH = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A8E106A2E747CED00E36BCD /* Build configuration list for PBXAggregateTarget "Publish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A8E106B2E747CED00E36BCD /* Debug */,
+				2A8E106C2E747CED00E36BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoyable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -692,6 +495,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2A8E0FBF2E74772D00E36BCD /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A8E10162E747BDE00E36BCD /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A8E0FBF2E74772D00E36BCD /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

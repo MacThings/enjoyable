@@ -1,0 +1,141 @@
+/* Standardname für die erste Zuordnung */
+"(default)" = "(Standard)";
+
+/* Magischer String, um automatische Umbenennungen auszulösen */
+"@Application" = "@Anwendung";
+
+/* Achsenname */
+"axis %d" = "Achse %d";
+
+/* Achse – hoher Trigger */
+"axis high" = "Hoch";
+
+/* Achse – niedriger Trigger */
+"axis low" = "Niedrig";
+
+/* Button-Name */
+"button %d" = "Taste %d";
+
+/* Button zum Abbrechen des Imports */
+"cancel import" = "Abbrechen";
+
+/* Menüeintrag: Ereignissimulation deaktivieren */
+"Disable" = "Deaktivieren";
+
+/* Menüeintrag: Ereignissimulation aktivieren */
+"Enable" = "Aktivieren";
+
+/* Anzeige, wenn ein Tastencode eingegeben werden muss */
+"enter key code" = "Tastencode eingeben (z. B. 0x2A)";
+
+/* Hat-Switch nach unten */
+"hat down" = "Unten";
+
+/* Hat-Switch nach links */
+"hat left" = "Links";
+
+/* Hat-Switch nach rechts */
+"hat right" = "Rechts";
+
+/* Hat-Switch-Name */
+"hat switch %d" = "Hat-Schalter %d";
+
+/* Hat-Switch nach oben */
+"hat up" = "Oben";
+
+/* Button zum Zusammenführen importierter Zuordnungen */
+"import and merge" = "Zusammenführen";
+
+/* Erklärung bei Importkonflikt */
+"import conflict in %@" = "Diese Datei enthält Eingaben, die bereits in \"%@\" zugeordnet sind. Möchten Sie sie zusammenführen und bestehende Zuordnungen ersetzen oder als neue Zuordnung importieren?";
+
+/* Titel des Importkonflikt-Dialogs */
+"import conflict prompt" = "Vorhandene Zuordnungen ersetzen?";
+
+/* Button zum Importieren als neue Zuordnung */
+"import new mapping" = "Neue Zuordnung";
+
+/* Tastaturtaste */
+"Insert" = "Einfügen";
+
+/* Anzeige bei ungültigem Tastencode */
+"invalid key code" = "Tastencodes müssen kleine hexadezimale Zahlen sein (z. B. 0xA2)";
+
+/* Fehler, wenn eine Datei zwar JSON, aber keine Zuordnung ist */
+"invalid mapping file" = "Dies ist keine gültige Zuordnungsdatei.";
+
+/* unknown key code */
+"key 0x%x" = "Key 0x%x";
+
+/* numeric pad key */
+"Key Pad -" = "Key Pad -";
+
+/* numeric pad key */
+"Key Pad ," = "Key Pad ,";
+
+/* numeric pad key */
+"Key Pad ." = "Key Pad .";
+
+/* numeric pad key */
+"Key Pad *" = "Key Pad *";
+
+/* numeric pad key */
+"Key Pad /" = "Key Pad /";
+
+/* numeric pad key */
+"Key Pad +" = "Key Pad +";
+
+/* numeric pad key */
+"Key Pad =" = "Key Pad =";
+
+/* numeric pad key */
+"Key Pad 0" = "Key Pad 0";
+
+/* numeric pad key */
+"Key Pad 1" = "Key Pad 1";
+
+/* numeric pad key */
+"Key Pad 2" = "Key Pad 2";
+
+/* numeric pad key */
+"Key Pad 3" = "Key Pad 3";
+
+/* numeric pad key */
+"Key Pad 4" = "Key Pad 4";
+
+/* numeric pad key */
+"Key Pad 5" = "Key Pad 5";
+
+/* numeric pad key */
+"Key Pad 6" = "Key Pad 6";
+
+/* numeric pad key */
+"Key Pad 7" = "Key Pad 7";
+
+/* numeric pad key */
+"Key Pad 8" = "Key Pad 8";
+
+/* numeric pad key */
+"Key Pad 9" = "Key Pad 9";
+
+/* Tastaturtasten mit Symbolen */
+"Left ⇧" = "⇧ Links";
+"Left ⌃" = "⌃ Links";
+"Left ⌘" = "⌘ Links";
+"Left ⌥" = "⌥ Links";
+
+/* Menüeintrag, wenn Zuordnungs-Liste zu lang ist */
+"mapping overflow %lu" = "(und %lu weitere…)";
+
+/* Tastaturtaste */
+"Menu" = "Menü";
+
+/* Rechte Modifier-Tasten */
+"Right ⇧" = "⇧ Rechts";
+"Right ⌃" = "⌃ Rechts";
+"Right ⌘" = "⌘ Rechts";
+"Right ⌥" = "⌥ Rechts";
+
+/* Name für neue Zuordnungen */
+"Untitled" = "Unbenannt";
+
