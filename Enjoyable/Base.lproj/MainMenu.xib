@@ -125,7 +125,7 @@
             </items>
             <point key="canvasLocation" x="-1030" y="-1007"/>
         </menu>
-        <window title="Enjoyable" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Enjoyable" animationBehavior="default" id="450">
+        <window title="Enjoyable" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="Enjoyable" animationBehavior="default" id="450">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="355" y="59" width="664" height="323"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2056" height="1289"/>
@@ -368,48 +368,6 @@ Switch back to re-enable input.</string>
                     </customView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="AC1F5C48-4C16-4C9D-9779-B783AF35E2E1" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="487">
-                <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="4AC66688-76E8-47ED-AC0A-7462220A4019" label="Mapping Selector" paletteLabel="Mapping Selector" image="NSListViewTemplate" title="(default)" autovalidates="NO" id="837" userLabel="Mapping Selector">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="13" height="25"/>
-                        <size key="maxSize" width="141" height="25"/>
-                        <button key="view" toolTip="Change the active mapping" verticalHuggingPriority="750" id="835">
-                            <rect key="frame" x="0.0" y="14" width="140" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="(default)" bezelStyle="texturedRounded" image="NSListViewTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="836">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                        <connections>
-                            <action selector="mappingTriggerClicked:" target="993" id="998"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="849"/>
-                    <toolbarItem implicitItemIdentifier="2CB21E35-9CF1-4C67-9670-31139C914D10" label="Enabled" paletteLabel="Enabled" image="NSRightFacingTriangleTemplate" id="874">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="36" height="25"/>
-                        <size key="maxSize" width="36" height="25"/>
-                        <button key="view" toolTip="Enable mapped actions" verticalHuggingPriority="750" id="872">
-                            <rect key="frame" x="7" y="14" width="36" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRightFacingTriangleTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="873">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="simulatingEventsChanged:" target="482" id="1030"/>
-                            </connections>
-                        </button>
-                    </toolbarItem>
-                </allowedToolbarItems>
-                <defaultToolbarItems>
-                    <toolbarItem reference="837"/>
-                    <toolbarItem reference="849"/>
-                    <toolbarItem reference="874"/>
-                </defaultToolbarItems>
-            </toolbar>
             <connections>
                 <outlet property="delegate" destination="482" id="977"/>
             </connections>
@@ -456,7 +414,6 @@ Switch back to re-enable input.</string>
                 <outlet property="ic" destination="479" id="1036"/>
                 <outlet property="mvc" destination="993" id="1024"/>
                 <outlet property="oc" destination="686" id="1037"/>
-                <outlet property="simulatingEventsButton" destination="872" id="1031"/>
                 <outlet property="statusItemMenu" destination="918" id="928"/>
                 <outlet property="window" destination="450" id="865"/>
             </connections>
@@ -496,7 +453,6 @@ Switch back to re-enable input.</string>
                 <outlet property="delegate" destination="482" id="1023"/>
                 <outlet property="mappingList" destination="459" id="1003"/>
                 <outlet property="mappingListPopover" destination="851" id="1000"/>
-                <outlet property="mappingListTrigger" destination="835" id="999"/>
                 <outlet property="moveDown" destination="896" id="1010"/>
                 <outlet property="moveUp" destination="893" id="1011"/>
                 <outlet property="removeMapping" destination="511" id="1006"/>

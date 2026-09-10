@@ -11,9 +11,94 @@
 #import "NJInput.h"
 #import "NJEvents.h"
 
+static NSToolbarItemIdentifier const NJMappingToolbarItemIdentifier = @"de.slsoft.Enjoyable.toolbar.mapping";
+static NSToolbarItemIdentifier const NJEnabledToolbarItemIdentifier = @"de.slsoft.Enjoyable.toolbar.enabled";
+static NSToolbarIdentifier const NJToolbarIdentifier = @"de.slsoft.Enjoyable.toolbar";
+
+static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
+    return [NSBundle.mainBundle localizedStringForKey:key value:fallback table:@"MainMenu"];
+}
+
 @implementation EnjoyableApplicationDelegate {
     NSStatusItem *statusItem;
     NSMutableArray *_errors;
+    NSToolbar *_toolbar;
+    NSToolbarItem *_mappingToolbarItem;
+    NSToolbarItem *_enabledToolbarItem;
+}
+
+- (void)mappingToolbarClicked:(id)sender {
+    [self.mvc mappingTriggerClicked:sender];
+}
+
+- (void)configureToolbar {
+    NSString *mappingTitle = self.ic.currentMapping.name;
+    if (!mappingTitle)
+        mappingTitle = NJInterfaceString(@"836.title", @"(default)");
+    NSButton *mappingButton = [NSButton buttonWithTitle:mappingTitle
+                                                 target:self
+                                                 action:@selector(mappingToolbarClicked:)];
+    mappingButton.bezelStyle = NSBezelStyleTexturedRounded;
+    mappingButton.image = [NSImage imageNamed:NSImageNameListViewTemplate];
+    mappingButton.imagePosition = NSImageLeft;
+    mappingButton.toolTip = NJInterfaceString(@"835.ibShadowedToolTip", @"Change the active mapping");
+    mappingButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [mappingButton.widthAnchor constraintGreaterThanOrEqualToConstant:140.0],
+        [mappingButton.widthAnchor constraintLessThanOrEqualToConstant:240.0],
+    ]];
+    self.mvc.mappingListTrigger = mappingButton;
+
+    _mappingToolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:NJMappingToolbarItemIdentifier];
+    _mappingToolbarItem.label = NJInterfaceString(@"837.label", @"Mapping Selector");
+    _mappingToolbarItem.paletteLabel = _mappingToolbarItem.label;
+    _mappingToolbarItem.toolTip = mappingButton.toolTip;
+    _mappingToolbarItem.autovalidates = NO;
+    _mappingToolbarItem.view = mappingButton;
+
+    NSButton *enabledButton = [NSButton buttonWithImage:[NSImage imageNamed:NSImageNameRightFacingTriangleTemplate]
+                                                target:self
+                                                action:@selector(simulatingEventsChanged:)];
+    enabledButton.bezelStyle = NSBezelStyleTexturedRounded;
+    enabledButton.imagePosition = NSImageOnly;
+    enabledButton.toolTip = NJInterfaceString(@"872.ibShadowedToolTip", @"Enable mapped actions");
+    [enabledButton setButtonType:NSButtonTypePushOnPushOff];
+    enabledButton.state = self.ic.simulatingEvents ? NSControlStateValueOn : NSControlStateValueOff;
+    enabledButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [enabledButton.widthAnchor constraintEqualToConstant:36.0].active = YES;
+    self.simulatingEventsButton = enabledButton;
+
+    _enabledToolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:NJEnabledToolbarItemIdentifier];
+    _enabledToolbarItem.label = NJInterfaceString(@"874.label", @"Enabled");
+    _enabledToolbarItem.paletteLabel = _enabledToolbarItem.label;
+    _enabledToolbarItem.toolTip = enabledButton.toolTip;
+    _enabledToolbarItem.view = enabledButton;
+
+    _toolbar = [[NSToolbar alloc] initWithIdentifier:NJToolbarIdentifier];
+    _toolbar.delegate = self;
+    _toolbar.allowsUserCustomization = NO;
+    _toolbar.displayMode = NSToolbarDisplayModeIconOnly;
+    _toolbar.sizeMode = NSToolbarSizeModeRegular;
+    _toolbar.showsBaselineSeparator = NO;
+    self.window.toolbar = _toolbar;
+}
+
+- (NSArray<NSToolbarItemIdentifier> *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar {
+    return @[NJMappingToolbarItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, NJEnabledToolbarItemIdentifier];
+}
+
+- (NSArray<NSToolbarItemIdentifier> *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar {
+    return @[NJMappingToolbarItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, NJEnabledToolbarItemIdentifier];
+}
+
+- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar
+     itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier
+ willBeInsertedIntoToolbar:(BOOL)flag {
+    if ([itemIdentifier isEqualToString:NJMappingToolbarItemIdentifier])
+        return _mappingToolbarItem;
+    if ([itemIdentifier isEqualToString:NJEnabledToolbarItemIdentifier])
+        return _enabledToolbarItem;
+    return nil;
 }
 
 - (void)didSwitchApplication:(NSNotification *)note {
@@ -23,6 +108,8 @@
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    self.window.restorable = NO;
+
     [NSNotificationCenter.defaultCenter
         addObserver:self
         selector:@selector(mappingDidChange:)
@@ -63,6 +150,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [self configureToolbar];
+
     BOOL hidden = [NSUserDefaults.standardUserDefaults boolForKey:@"hidden in status item"];
     BOOL launchedAsLoginItem = [NSProcessInfo.processInfo.environment objectForKey:@"XPC_SERVICE_NAME"] != nil;
     if (hidden && launchedAsLoginItem) {
@@ -71,6 +160,10 @@
         [self.window makeKeyAndOrderFront:nil];
     }
 }
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)application {
+    return YES;
+}
+
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
                     hasVisibleWindows:(BOOL)flag {
     [self restoreToForeground:theApplication];
@@ -187,14 +280,15 @@
 
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
     [self restoreToForeground:sender];
-    NSError *error;
+    NSError *error = nil;
     NSURL *URL = [NSURL fileURLWithPath:filename];
     NJMapping *mapping = [NJMapping mappingWithContentsOfURL:URL
                                                        error:&error];
-    if ([[self.ic mappingForKey:mapping.name] hasConflictWith:mapping]) {
+    NJMapping *existing = mapping ? [self.ic mappingForKey:mapping.name] : nil;
+    if ([existing hasConflictWith:mapping]) {
         [self promptForMapping:mapping atIndex:self.ic.mappings.count];
-    } else if ([self.ic  mappingForKey:mapping.name]) {
-        [[self.ic mappingForKey:mapping.name] mergeEntriesFrom:mapping];
+    } else if (existing) {
+        [existing mergeEntriesFrom:mapping];
     } else if (mapping) {
         [self.mvc beginUpdates];
         [self.ic addMapping:mapping];
@@ -224,13 +318,14 @@
                       if (result != NSModalResponseOK)
                           return;
                       [panel close];
-                      NSError *error;
+                      NSError *error = nil;
                       NJMapping *mapping = [NJMapping mappingWithContentsOfURL:panel.URL
                                                                          error:&error];
-                      if ([[self.ic mappingForKey:mapping.name] hasConflictWith:mapping]) {
+                      NJMapping *existing = mapping ? [self.ic mappingForKey:mapping.name] : nil;
+                      if ([existing hasConflictWith:mapping]) {
                           [self promptForMapping:mapping atIndex:self.ic.mappings.count];
-                      } else if ([self.ic mappingForKey:mapping.name]) {
-                          [[self.ic mappingForKey:mapping.name] mergeEntriesFrom:mapping];
+                      } else if (existing) {
+                          [existing mergeEntriesFrom:mapping];
                           [self.mvc.mappingList reloadData];
                       } else if (mapping) {
                           [self.ic addMapping:mapping];
@@ -251,7 +346,7 @@
                       if (result != NSModalResponseOK)
                           return;
                       [panel close];
-                      NSError *error;
+                      NSError *error = nil;
                       if (![mapping writeToURL:panel.URL error:&error]) {
                           [self presentErrorSheet:error];
                       }
@@ -266,20 +361,15 @@
     NJMapping *newMapping = userInfo[@"new mapping"];
     NSInteger idx = [userInfo[@"index"] intValue];
     [alert.window orderOut:nil];
-    switch (returnCode) {
-        case NSAlertFirstButtonReturn: // Merge
-            [self.ic mergeMapping:newMapping intoMapping:oldMapping];
-            [self.ic activateMapping:oldMapping];
-            break;
-        case NSAlertThirdButtonReturn: // New Mapping
-            [self.mvc beginUpdates];
-            [self.ic addMapping:newMapping];
-            [self.mvc addedMappingAtIndex:idx startEditing:YES];
-            [self.mvc endUpdates];
-            [self.ic activateMapping:newMapping];
-            break;
-        default: // Cancel, other.
-            break;
+    if (returnCode == NSAlertFirstButtonReturn) { // Merge
+        [self.ic mergeMapping:newMapping intoMapping:oldMapping];
+        [self.ic activateMapping:oldMapping];
+    } else if (returnCode == NSAlertThirdButtonReturn) { // New Mapping
+        [self.mvc beginUpdates];
+        [self.ic addMapping:newMapping];
+        [self.mvc addedMappingAtIndex:idx startEditing:YES];
+        [self.mvc endUpdates];
+        [self.ic activateMapping:newMapping];
     }
 }
 
@@ -356,10 +446,11 @@
                          error:(NSError **)error {
     NJMapping *mapping = [NJMapping mappingWithContentsOfURL:url
                                                        error:error];
-    if ([[self.ic mappingForKey:mapping.name] hasConflictWith:mapping]) {
+    NJMapping *existing = mapping ? [self.ic mappingForKey:mapping.name] : nil;
+    if ([existing hasConflictWith:mapping]) {
         [self promptForMapping:mapping atIndex:index];
-    } else if ([self.ic mappingForKey:mapping.name]) {
-        [[self.ic mappingForKey:mapping.name] mergeEntriesFrom:mapping];
+    } else if (existing) {
+        [existing mergeEntriesFrom:mapping];
     } else if (mapping) {
         [self.mvc beginUpdates];
         [self.mvc addedMappingAtIndex:index startEditing:NO];

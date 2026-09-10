@@ -10,7 +10,12 @@
 #import "NJInputAnalog.h"
 
 static float normalize(CFIndex p, CFIndex min, CFIndex max) {
-    return 2 * (p - min) / (float)(max - min) - 1;
+    double range = (double)max - (double)min;
+    if (range == 0.0)
+        return 0.0f;
+
+    double position = (double)p - (double)min;
+    return (float)(2.0 * position / range - 1.0);
 }
 
 @implementation NJInputAnalog {

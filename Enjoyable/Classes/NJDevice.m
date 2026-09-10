@@ -14,13 +14,17 @@
 
 static NSArray *InputsForElement(IOHIDDeviceRef device, id parent) {
     CFArrayRef elements = IOHIDDeviceCopyMatchingElements(device, NULL, kIOHIDOptionsTypeNone);
-    NSMutableArray *children = [NSMutableArray arrayWithCapacity:CFArrayGetCount(elements)];
+    if (!elements)
+        return @[];
+
+    CFIndex elementCount = CFArrayGetCount(elements);
+    NSMutableArray *children = [NSMutableArray arrayWithCapacity:(NSUInteger)elementCount];
     
     int buttons = 0;
     int axes = 0;
     int hats = 0;
     
-    for (CFIndex i = 0; i < CFArrayGetCount(elements); i++) {
+    for (CFIndex i = 0; i < elementCount; i++) {
         IOHIDElementRef element = (IOHIDElementRef)CFArrayGetValueAtIndex(elements, i);
         IOHIDElementType type = IOHIDElementGetType(element);
         uint32_t usage = IOHIDElementGetUsage(element);

@@ -54,7 +54,7 @@
 	<key>SUPublicEDKey</key>
 	<string>IocWX96bR2E4UoPBgFT3KVRVWbut/1HjJVrfChE6l+s=</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>EnjoyableApplication</string>
 	<key>NSSupportsAutomaticTermination</key>
 	<string>YES</string>
 	<key>NSSupportsSuddenTermination</key>

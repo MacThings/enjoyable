@@ -29,8 +29,9 @@
 }
 
 - (void)notifyEvent:(IOHIDValueRef)value {
-    self.active = IOHIDValueGetIntegerValue(value) == _max;
-    self.magnitude = IOHIDValueGetIntegerValue(value) / (float)_max;
+    CFIndex rawValue = IOHIDValueGetIntegerValue(value);
+    self.active = rawValue == _max;
+    self.magnitude = _max != 0 ? (float)rawValue / (float)_max : 0.0f;
 }
 
 @end

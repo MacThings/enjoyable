@@ -100,15 +100,22 @@
 
 + (id)mappingWithContentsOfURL:(NSURL *)url error:(NSError **)error {
     NSInputStream *stream = [NSInputStream inputStreamWithURL:url];
+    if (!stream) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:NSFileReadUnknownError
+                                     userInfo:@{NSURLErrorKey: url}];
+        }
+        return nil;
+    }
+
     [stream open];
-    NSDictionary *serialization = stream && !*error
-        ? [NSJSONSerialization JSONObjectWithStream:stream
-                                            options:(NSJSONReadingOptions)0
-                                              error:error]
-        : nil;
+    id serialization = [NSJSONSerialization JSONObjectWithStream:stream
+                                                         options:(NSJSONReadingOptions)0
+                                                           error:error];
     [stream close];
-    
-    if (!serialization && error)
+
+    if (!serialization)
         return nil;
     
     if (!([serialization isKindOfClass:NSDictionary.class]

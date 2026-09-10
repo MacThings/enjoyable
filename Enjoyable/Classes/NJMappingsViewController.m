@@ -27,8 +27,11 @@
 }
 
 - (IBAction)removeClicked:(id)sender {
-    [self.delegate mappingsViewController:self
-                     removeMappingAtIndex:self.mappingList.selectedRow];
+    NSInteger index = self.mappingList.selectedRow;
+    if (index < 0 || ![self.delegate mappingsViewController:self canRemoveMappingAtIndex:index])
+        return;
+
+    [self.delegate mappingsViewController:self removeMappingAtIndex:index];
 }
 
 - (IBAction)moveUpClicked:(id)sender {
@@ -91,14 +94,24 @@
 }
 
 - (void)changedActiveMappingToIndex:(NSInteger)index {
-    NJMapping *mapping = [self.delegate mappingsViewController:self
-                                               mappingForIndex:index];
+    NSInteger count = [self.delegate numberOfMappings:self];
+    if (index < 0 || index >= count) {
+        self.removeMapping.enabled = NO;
+        self.moveUp.enabled = NO;
+        self.moveDown.enabled = NO;
+        return;
+    }
+
+    NJMapping *mapping = [self.delegate mappingsViewController:self mappingForIndex:index];
     self.removeMapping.enabled = [self.delegate mappingsViewController:self
                                                canRemoveMappingAtIndex:index];
-    self.moveUp.enabled = YES;
-    self.moveDown.enabled = YES;
+    self.moveUp.enabled = index > 0 &&
+        [self.delegate mappingsViewController:self canMoveMappingFromIndex:index toIndex:index - 1];
+    self.moveDown.enabled = index + 1 < count &&
+        [self.delegate mappingsViewController:self canMoveMappingFromIndex:index toIndex:index + 1];
     self.mappingListTrigger.title = mapping.name;
-    [self.mappingList selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+    [self.mappingList selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)index]
+                 byExtendingSelection:NO];
     [self.mappingList scrollRowToVisible:index];
     [NSUserDefaults.standardUserDefaults setInteger:index forKey:@"selected"];
 }
@@ -106,8 +119,10 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)note {
     [self.mappingList abortEditing];
     NSTableView *tableView = note.object;
-    [self.delegate mappingsViewController:self
-                      choseMappingAtIndex:tableView.selectedRow];
+    if (tableView.selectedRow >= 0) {
+        [self.delegate mappingsViewController:self
+                          choseMappingAtIndex:tableView.selectedRow];
+    }
 }
 
 - (id)tableView:(NSTableView *)view objectValueForTableColumn:(NSTableColumn *)column row:(NSInteger)index {
@@ -143,7 +158,7 @@
         return YES;
     } else if ([pboard.types containsObject:NSPasteboardTypeURL]) {
         NSURL *url = [NSURL URLFromPasteboard:pboard];
-        NSError *error;
+        NSError *error = nil;
         if (![self.delegate mappingsViewController:self
                               importMappingFromURL:url
                                            atIndex:row

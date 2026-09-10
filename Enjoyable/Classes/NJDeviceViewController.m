@@ -19,7 +19,7 @@
         NSArray *expanded = [NSUserDefaults.standardUserDefaults objectForKey:@"expanded rows"];
         if (![expanded isKindOfClass:NSArray.class])
             expanded = @[];
-        _expanded = [[NSMutableArray alloc] initWithCapacity:MAX(16, _expanded.count)];
+        _expanded = [[NSMutableArray alloc] initWithCapacity:MAX((NSUInteger)16, expanded.count)];
         [_expanded addObjectsFromArray:expanded];
     }
     return self;

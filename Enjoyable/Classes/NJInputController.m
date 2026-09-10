@@ -49,15 +49,20 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
         _continousOutputs = [[NSMutableArray alloc] initWithCapacity:32];
 
         CVReturn cvErr = CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
-        if (cvErr) {
+        if (cvErr == kCVReturnSuccess)
+            cvErr = CVDisplayLinkSetOutputCallback(_displayLink, _updateDL, (__bridge void *)self);
+
+        if (cvErr != kCVReturnSuccess) {
+            if (_displayLink) {
+                CVDisplayLinkRelease(_displayLink);
+                _displayLink = NULL;
+            }
             NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                                  code:cvErr
                                              userInfo:nil];
             [self.delegate inputController:self didError:error];
-            NSLog(@"DisplayLink failed creation with error: %@", error);
-            _displayLink = NULL;
+            NSLog(@"DisplayLink setup failed with error: %@", error);
         }
-        CVDisplayLinkSetOutputCallback(_displayLink, _updateDL, (__bridge void *)self);
         
         _HIDManager = [[NJHIDManager alloc] initWithCriteria:@[
                        @{ NSSTR(kIOHIDDeviceUsagePageKey) : @(kHIDPage_GenericDesktop),
@@ -188,15 +193,19 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
 }
 
 - (void)updateContinuousOutputs {
-    self.mouseLoc = [NSEvent mouseLocation];
-    for (NJOutput *output in [_continousOutputs copy]) {
-        if (![output update:self]) {
-            [_continousOutputs removeObject:output];
-        }
+    self.mouseLoc = NSEvent.mouseLocation;
+
+    NSUInteger index = 0;
+    while (index < _continousOutputs.count) {
+        NJOutput *output = _continousOutputs[index];
+        if ([output update:self])
+            ++index;
+        else
+            [_continousOutputs removeObjectAtIndex:index];
     }
-    if (!_continousOutputs.count && _displayLink) {
+
+    if (_continousOutputs.count == 0 && _displayLink)
         CVDisplayLinkStop(_displayLink);
-    }
 }
 
 - (void)HIDManager:(NJHIDManager *)manager didError:(NSError *)error {
@@ -301,13 +310,19 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
 }
 
 - (void)activateMappingForcibly:(NJMapping *)mapping {
+    if (!mapping)
+        return;
+
+    NSInteger idx = [self indexOfMapping:mapping];
+    if (idx == NSNotFound)
+        return;
+
     NSLog(@"Switching to mapping %@.", mapping.name);
     _currentMapping = mapping;
-    NSUInteger idx = [self indexOfMapping:_currentMapping];
     [NSNotificationCenter.defaultCenter
         postNotificationName:NJEventMappingChanged
         object:self
-        userInfo:@{ NJMappingKey : _currentMapping,
+        userInfo:@{ NJMappingKey : mapping,
                     NJMappingIndexKey: @(idx) }];
 }
 
@@ -359,7 +374,7 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
     [existing mergeEntriesFrom:mapping];
     [self mappingsChanged];
     if (existing == _currentMapping)
-        [self activateMappingForcibly:mapping];
+        [self activateMappingForcibly:existing];
 }
 
 - (void)renameMapping:(NJMapping *)mapping to:(NSString *)name {

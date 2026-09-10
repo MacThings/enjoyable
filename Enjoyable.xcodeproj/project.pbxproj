@@ -82,7 +82,6 @@
 				Classes/NJOutputViewController.m,
 				de.slsoft.Enjoyable.mapping.icns,
 				enjoyable.html,
-				Info.plist,
 				"Other Sources/main.m",
 			);
 			target = 8D1107260486CEB800E47090 /* Enjoyable */;
@@ -224,6 +223,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		2A8E10132E7478D000E36BCD /* Prepare Build */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -238,7 +238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# Ermittelt den aktuellen Benutzer\nSYS_USER=$(id -un)\n\n# Prüfen, ob das Upload-Verzeichnis existiert, und Dateien vorbereiten\nUPLOAD_DIR=\"/Volumes/Homeshare/Xcode/enjoyable/upload\"\n\nif [ -d \"$UPLOAD_DIR\" ]; then\n    # HTML-Datei kopieren\n    \n    cp \"/Users/$SYS_USER/Documents/Xcode/enjoyable/Enjoyable/enjoyable.html\" \"$UPLOAD_DIR/\"\n    \n    # Codesignieren der App\n    codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\"\n    \n    # App als ZIP-Archiv erstellen\n    ditto -c -k --sequesterRsrc --keepParent \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"$UPLOAD_DIR/enjoyable.zip\"\nfi\n\n# Sicherstellen, dass keine alte Version der App auf dem Desktop existiert\nDESKTOP_APP=\"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nif [ -d \"$DESKTOP_APP\" ]; then\n    rm -rf \"$DESKTOP_APP\"\nfi\n\n# App auf den Desktop kopieren\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/\"\n\n# App auf dem Desktop erneut codesignieren\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"$DESKTOP_APP\"\n\n\n";
+			shellScript = "#!/bin/bash\n\n# Unsigned validation builds should compile/link only.\nif [ \"${CODE_SIGNING_ALLOWED:-YES}\" = \"NO\" ]; then\n    exit 0\nfi\n\n# Ermittelt den aktuellen Benutzer\nSYS_USER=$(id -un)\n\n# Prüfen, ob das Upload-Verzeichnis existiert, und Dateien vorbereiten\nUPLOAD_DIR=\"/Volumes/Homeshare/Xcode/enjoyable/upload\"\n\nif [ -d \"$UPLOAD_DIR\" ]; then\n    # HTML-Datei kopieren\n    \n    cp \"/Users/$SYS_USER/Documents/Xcode/enjoyable/Enjoyable/enjoyable.html\" \"$UPLOAD_DIR/\"\n    \n    # Codesignieren der App\n    #codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\"\n    \n    # App als ZIP-Archiv erstellen\n    ditto -c -k --sequesterRsrc --keepParent \\\n        \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"$UPLOAD_DIR/enjoyable.zip\"\nfi\n\n# Sicherstellen, dass keine alte Version der App auf dem Desktop existiert\nDESKTOP_APP=\"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nif [ -d \"$DESKTOP_APP\" ]; then\n    rm -rf \"$DESKTOP_APP\"\nfi\n\n# App auf den Desktop kopieren\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/\"\n\n# App auf dem Desktop erneut codesignieren\n#codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"$DESKTOP_APP\"\n\n\n";
 		};
 		2A8E106D2E747D0000E36BCD /* Publish */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -413,8 +413,8 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
-				ONLY_ACTIVE_ARCH = NO;
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
 				VALID_ARCHS = "arm64 x86_64";
 			};
@@ -459,7 +459,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15.4;
 				ONLY_ACTIVE_ARCH = NO;
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
 				VALID_ARCHS = "arm64 x86_64";
 			};

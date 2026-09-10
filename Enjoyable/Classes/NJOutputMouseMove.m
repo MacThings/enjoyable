@@ -62,37 +62,40 @@ static CGFloat pointRectSquaredDistance(NSPoint p, NSRect r) {
             dy = self.magnitude * _speed;
             break;
     }
+    NSArray<NSScreen *> *screens = NSScreen.screens;
+    NSScreen *primaryScreen = screens.firstObject;
+    if (!primaryScreen)
+        return NO;
+
     NSPoint mouseLoc = ic.mouseLoc;
-    mouseLoc.x = mouseLoc.x + dx;
-    mouseLoc.y = mouseLoc.y - dy;
-    bool inScreen = false;
-    for (NSScreen *screen in NSScreen.screens) {
+    mouseLoc.x += dx;
+    mouseLoc.y -= dy;
+
+    BOOL inScreen = NO;
+    for (NSScreen *screen in screens) {
         if (NSMouseInRect(mouseLoc, screen.frame, NO)) {
-            inScreen = true;
+            inScreen = YES;
             break;
         }
     }
     if (!inScreen) {
-        NSScreen *nearestScreen;
-        if (NSScreen.screens.count == 0) {
-            nearestScreen = NSScreen.screens[0];
-        } else {
-            CGFloat minDistance = 0;
-            for (NSScreen *screen in NSScreen.screens) {
-                CGFloat d = pointRectSquaredDistance(mouseLoc, screen.frame);
-                if (minDistance == 0 || d < minDistance) {
-                    minDistance = d;
-                    nearestScreen = screen;
-                }
+        NSScreen *nearestScreen = primaryScreen;
+        CGFloat minDistance = CGFLOAT_MAX;
+        for (NSScreen *screen in screens) {
+            CGFloat distance = pointRectSquaredDistance(mouseLoc, screen.frame);
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestScreen = screen;
             }
         }
+
         NSRect frame = nearestScreen.frame;
         mouseLoc.x = CLAMP(mouseLoc.x, NSMinX(frame), NSMaxX(frame) - 1);
         mouseLoc.y = CLAMP(mouseLoc.y, NSMinY(frame) + 1, NSMaxY(frame));
     }
     ic.mouseLoc = mouseLoc;
     
-    CGFloat height = ((NSScreen*)NSScreen.screens[0]).frame.size.height;
+    CGFloat height = NSHeight(primaryScreen.frame);
     CGEventRef move = CGEventCreateMouseEvent(NULL, kCGEventMouseMoved,
                                               CGPointMake(mouseLoc.x, height - mouseLoc.y),
                                               0);

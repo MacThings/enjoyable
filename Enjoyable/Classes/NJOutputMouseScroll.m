@@ -36,7 +36,7 @@
 - (int)wheel:(int)n {
     int amount = abs(_direction) == n ? _direction / n : 0;
     if (self.smooth)
-        amount = (int)roundf(amount * _speed * self.magnitude);
+        amount = (int)roundf((float)amount * _speed * self.magnitude);
     return amount;
 }
 

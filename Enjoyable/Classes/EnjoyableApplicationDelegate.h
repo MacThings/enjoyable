@@ -18,7 +18,8 @@
                                                     NJMappingsViewControllerDelegate,
                                                     NJOutputViewControllerDelegate,
                                                     NJMappingMenuDelegate,
-                                                    NSWindowDelegate>
+                                                    NSWindowDelegate,
+                                                    NSToolbarDelegate>
 
 @property (nonatomic, strong) IBOutlet NJInputController *ic;
 @property (nonatomic, strong) IBOutlet NJOutputViewController *oc;
