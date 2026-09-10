@@ -43,6 +43,27 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
 
 #define NSSTR(e) ((NSString *)CFSTR(e))
 
+static NSDictionary *NJGameControllerMatchingCriterion(uint32_t usage) {
+    NSMutableDictionary *criterion = [@{
+        NSSTR(kIOHIDDeviceUsagePageKey) : @(kHIDPage_GenericDesktop),
+        NSSTR(kIOHIDDeviceUsageKey) : @(usage)
+    } mutableCopy];
+
+    // macOS 14+ can expose a GameController synthetic HID alongside the
+    // physical controller. Enjoyable uses raw IOKit HID, so use one source
+    // consistently instead of receiving both physical and emulated devices.
+    if (@available(macOS 14.0, *))
+        criterion[@"GCSyntheticDevice"] = @NO;
+
+    return criterion;
+}
+
+static BOOL NJIsSyntheticGameControllerDevice(IOHIDDeviceRef device) {
+    if (!device)
+        return NO;
+    return IOHIDDeviceGetProperty(device, CFSTR("GCSyntheticDevice")) == kCFBooleanTrue;
+}
+
 - (id)init {
     if ((self = [super init])) {
         _devices = [[NSMutableArray alloc] initWithCapacity:16];
@@ -65,12 +86,9 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
         }
         
         _HIDManager = [[NJHIDManager alloc] initWithCriteria:@[
-                       @{ NSSTR(kIOHIDDeviceUsagePageKey) : @(kHIDPage_GenericDesktop),
-                       NSSTR(kIOHIDDeviceUsageKey) : @(kHIDUsage_GD_Joystick) },
-                       @{ NSSTR(kIOHIDDeviceUsagePageKey) : @(kHIDPage_GenericDesktop),
-                       NSSTR(kIOHIDDeviceUsageKey) : @(kHIDUsage_GD_GamePad) },
-                       @{ NSSTR(kIOHIDDeviceUsagePageKey) : @(kHIDPage_GenericDesktop),
-                       NSSTR(kIOHIDDeviceUsageKey) : @(kHIDUsage_GD_MultiAxisController) }
+                       NJGameControllerMatchingCriterion(kHIDUsage_GD_Joystick),
+                       NJGameControllerMatchingCriterion(kHIDUsage_GD_GamePad),
+                       NJGameControllerMatchingCriterion(kHIDUsage_GD_MultiAxisController)
                        ]
                                                     delegate:self];
 
@@ -171,6 +189,11 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
 }
 
 - (void)HIDManager:(NJHIDManager *)manager deviceAdded:(IOHIDDeviceRef)device {
+    // Defensive guard in case a synthetic device reaches the callback despite
+    // the matching filter (for example across OS-version transitions).
+    if (NJIsSyntheticGameControllerDevice(device))
+        return;
+
     NJDevice *match = [[NJDevice alloc] initWithDevice:device];
     [self addDevice:match];
     [self.delegate inputController:self didAddDevice:match];
@@ -402,13 +425,15 @@ static CVReturn _updateDL(CVDisplayLinkRef displayLink,
 }
 
 - (void)moveMoveMappingFromIndex:(NSInteger)fromIdx toIndex:(NSInteger)toIdx {
-    if (fromIdx == toIdx || fromIdx < 0 || toIdx < 0 ||
-        fromIdx >= (NSInteger)_mappings.count || toIdx > (NSInteger)_mappings.count) {
+    NSInteger count = (NSInteger)_mappings.count;
+    if (fromIdx < 0 || fromIdx >= count ||
+        toIdx < 0 || toIdx >= count ||
+        fromIdx == toIdx) {
         return;
     }
+
     id obj = _mappings[fromIdx];
     [_mappings removeObjectAtIndex:fromIdx];
-    if (toIdx > fromIdx) toIdx--; // Zielindex anpassen, falls nach hinten verschoben
     [_mappings insertObject:obj atIndex:toIdx];
     [self mappingsChanged];
 }

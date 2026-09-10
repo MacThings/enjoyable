@@ -14,9 +14,27 @@
 static NSToolbarItemIdentifier const NJMappingToolbarItemIdentifier = @"de.slsoft.Enjoyable.toolbar.mapping";
 static NSToolbarItemIdentifier const NJEnabledToolbarItemIdentifier = @"de.slsoft.Enjoyable.toolbar.enabled";
 static NSToolbarIdentifier const NJToolbarIdentifier = @"de.slsoft.Enjoyable.toolbar";
+static NSString *const NJLaunchEnabledDefaultsKey = @"launch enabled";
 
 static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
     return [NSBundle.mainBundle localizedStringForKey:key value:fallback table:@"MainMenu"];
+}
+
+static NSImage *NJStatusLampImage(NSColor *color) {
+    NSImage *image = [NSImage imageWithSize:NSMakeSize(12.0, 12.0)
+                                    flipped:NO
+                             drawingHandler:^BOOL(NSRect dstRect) {
+        NSRect circleRect = NSInsetRect(dstRect, 1.0, 1.0);
+        [color setFill];
+        [[NSBezierPath bezierPathWithOvalInRect:circleRect] fill];
+        [[NSColor colorWithWhite:0.0 alpha:0.25] setStroke];
+        NSBezierPath *outline = [NSBezierPath bezierPathWithOvalInRect:NSInsetRect(circleRect, 0.5, 0.5)];
+        outline.lineWidth = 0.75;
+        [outline stroke];
+        return YES;
+    }];
+    image.template = NO;
+    return image;
 }
 
 @implementation EnjoyableApplicationDelegate {
@@ -31,48 +49,47 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
     [self.mvc mappingTriggerClicked:sender];
 }
 
+- (void)updateEnabledToolbarItem {
+    BOOL enabled = self.ic.simulatingEvents;
+    NSString *title = enabled
+        ? NSLocalizedString(@"Enabled", @"toolbar state when mapped actions are enabled")
+        : NSLocalizedString(@"Disabled", @"toolbar state when mapped actions are disabled");
+    _enabledToolbarItem.label = title;
+    _enabledToolbarItem.title = title;
+    _enabledToolbarItem.image = NJStatusLampImage(enabled ? NSColor.systemGreenColor : NSColor.systemRedColor);
+    _enabledToolbarItem.toolTip = enabled
+        ? NSLocalizedString(@"Disable mapped actions", @"toolbar tooltip while mappings are enabled")
+        : NSLocalizedString(@"Enable mapped actions", @"toolbar tooltip while mappings are disabled");
+}
+
 - (void)configureToolbar {
-    NSString *mappingTitle = self.ic.currentMapping.name;
-    if (!mappingTitle)
-        mappingTitle = NJInterfaceString(@"836.title", @"(default)");
-    NSButton *mappingButton = [NSButton buttonWithTitle:mappingTitle
-                                                 target:self
-                                                 action:@selector(mappingToolbarClicked:)];
-    mappingButton.bezelStyle = NSBezelStyleTexturedRounded;
-    mappingButton.image = [NSImage imageNamed:NSImageNameListViewTemplate];
-    mappingButton.imagePosition = NSImageLeft;
-    mappingButton.toolTip = NJInterfaceString(@"835.ibShadowedToolTip", @"Change the active mapping");
-    mappingButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:@[
-        [mappingButton.widthAnchor constraintGreaterThanOrEqualToConstant:140.0],
-        [mappingButton.widthAnchor constraintLessThanOrEqualToConstant:240.0],
-    ]];
-    self.mvc.mappingListTrigger = mappingButton;
+    NSString *mappingTitle = NJInterfaceString(@"83.title", @"Mappings");
 
     _mappingToolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:NJMappingToolbarItemIdentifier];
     _mappingToolbarItem.label = NJInterfaceString(@"837.label", @"Mapping Selector");
     _mappingToolbarItem.paletteLabel = _mappingToolbarItem.label;
-    _mappingToolbarItem.toolTip = mappingButton.toolTip;
+    _mappingToolbarItem.title = mappingTitle;
+    _mappingToolbarItem.toolTip = NJInterfaceString(@"835.ibShadowedToolTip", @"Change the active mapping");
+    _mappingToolbarItem.image = [NSImage imageNamed:NSImageNameListViewTemplate];
+    _mappingToolbarItem.bordered = YES;
+    _mappingToolbarItem.target = self;
+    _mappingToolbarItem.action = @selector(mappingToolbarClicked:);
     _mappingToolbarItem.autovalidates = NO;
-    _mappingToolbarItem.view = mappingButton;
-
-    NSButton *enabledButton = [NSButton buttonWithImage:[NSImage imageNamed:NSImageNameRightFacingTriangleTemplate]
-                                                target:self
-                                                action:@selector(simulatingEventsChanged:)];
-    enabledButton.bezelStyle = NSBezelStyleTexturedRounded;
-    enabledButton.imagePosition = NSImageOnly;
-    enabledButton.toolTip = NJInterfaceString(@"872.ibShadowedToolTip", @"Enable mapped actions");
-    [enabledButton setButtonType:NSButtonTypePushOnPushOff];
-    enabledButton.state = self.ic.simulatingEvents ? NSControlStateValueOn : NSControlStateValueOff;
-    enabledButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [enabledButton.widthAnchor constraintEqualToConstant:36.0].active = YES;
-    self.simulatingEventsButton = enabledButton;
+    if (@available(macOS 13.0, *))
+        _mappingToolbarItem.possibleLabels = [NSSet setWithObject:mappingTitle];
 
     _enabledToolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:NJEnabledToolbarItemIdentifier];
-    _enabledToolbarItem.label = NJInterfaceString(@"874.label", @"Enabled");
-    _enabledToolbarItem.paletteLabel = _enabledToolbarItem.label;
-    _enabledToolbarItem.toolTip = enabledButton.toolTip;
-    _enabledToolbarItem.view = enabledButton;
+    _enabledToolbarItem.paletteLabel = NSLocalizedString(@"Status", @"toolbar status item");
+    _enabledToolbarItem.bordered = YES;
+    _enabledToolbarItem.target = self;
+    _enabledToolbarItem.action = @selector(toggleSimulation:);
+    if (@available(macOS 13.0, *)) {
+        _enabledToolbarItem.possibleLabels = [NSSet setWithObjects:
+            NSLocalizedString(@"Enabled", @"toolbar state when mapped actions are enabled"),
+            NSLocalizedString(@"Disabled", @"toolbar state when mapped actions are disabled"),
+            nil];
+    }
+    [self updateEnabledToolbarItem];
 
     _toolbar = [[NSToolbar alloc] initWithIdentifier:NJToolbarIdentifier];
     _toolbar.delegate = self;
@@ -81,6 +98,9 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
     _toolbar.sizeMode = NSToolbarSizeModeRegular;
     _toolbar.showsBaselineSeparator = NO;
     self.window.toolbar = _toolbar;
+
+    self.mvc.mappingToolbarItem = _mappingToolbarItem;
+    self.mvc.mappingPopoverAnchorView = self.window.contentView;
 }
 
 - (NSArray<NSToolbarItemIdentifier> *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar {
@@ -126,6 +146,7 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
         name:NJEventSimulationStopped
         object:nil];
 
+    [self configureToolbar];
     [self.ic load];
     [self.mvc.mappingList reloadData];
     [self.mvc changedActiveMappingToIndex:
@@ -142,6 +163,10 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
         }
     }
     statusItem.menu = self.statusItemMenu;
+
+    BOOL launchEnabled = [NSUserDefaults.standardUserDefaults boolForKey:NJLaunchEnabledDefaultsKey];
+    if (launchEnabled)
+        self.ic.simulatingEvents = YES;
 }
 
 - (void)statusItemClicked:(id)sender {
@@ -150,8 +175,6 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    [self configureToolbar];
-
     BOOL hidden = [NSUserDefaults.standardUserDefaults boolForKey:@"hidden in status item"];
     BOOL launchedAsLoginItem = [NSProcessInfo.processInfo.environment objectForKey:@"XPC_SERVICE_NAME"] != nil;
     if (hidden && launchedAsLoginItem) {
@@ -211,7 +234,7 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
 }
 
 - (void)eventSimulationStarted:(NSNotification *)note {
-    self.simulatingEventsButton.state = NSControlStateValueOn;
+    [self updateEnabledToolbarItem];
     if (statusItem.button) {
         statusItem.button.image = [NSImage imageNamed:@"Status Menu Icon"];
     }
@@ -225,7 +248,7 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
 }
 
 - (void)eventSimulationStopped:(NSNotification *)note {
-    self.simulatingEventsButton.state = NSControlStateValueOff;
+    [self updateEnabledToolbarItem];
     if (statusItem.button) {
         statusItem.button.image = [NSImage imageNamed:@"Status Menu Icon Disabled"];
     }
@@ -308,6 +331,42 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
 - (void)mappingListShouldOpen {
     [self restoreToForeground:self];
     [self.mvc mappingTriggerClicked:self];
+}
+
+- (NSString *)uniqueCloneNameForMapping:(NJMapping *)mapping {
+    NSString *baseName = [NSString stringWithFormat:
+        NSLocalizedString(@"%@ copy", @"default name for a cloned mapping"), mapping.name];
+    if (![self.ic mappingForKey:baseName])
+        return baseName;
+
+    NSInteger suffix = 2;
+    NSString *candidate = nil;
+    do {
+        candidate = [NSString stringWithFormat:
+            NSLocalizedString(@"%@ copy %ld", @"default name for an additional cloned mapping"),
+            mapping.name, (long)suffix++];
+    } while ([self.ic mappingForKey:candidate]);
+    return candidate;
+}
+
+- (IBAction)cloneMappingClicked:(id)sender {
+    NJMapping *source = self.ic.currentMapping;
+    if (!source)
+        return;
+
+    NJMapping *clone = [[NJMapping alloc] initWithSerialization:[source serialize]];
+    clone.name = [self uniqueCloneNameForMapping:source];
+
+    NSInteger sourceIndex = [self.ic indexOfMapping:source];
+    NSInteger insertIndex = sourceIndex == NSNotFound
+        ? (NSInteger)self.ic.mappings.count
+        : sourceIndex + 1;
+
+    [self.mvc beginUpdates];
+    [self.ic insertMapping:clone atIndex:insertIndex];
+    [self.mvc addedMappingAtIndex:insertIndex startEditing:YES];
+    [self.mvc endUpdates];
+    [self.ic activateMapping:clone];
 }
 
 - (void)importMappingClicked:(id)sender {
@@ -414,8 +473,10 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
 - (BOOL)mappingsViewController:(NJMappingsViewController *)mvc
        canMoveMappingFromIndex:(NSInteger)fromIdx
                        toIndex:(NSInteger)toIdx {
-    return fromIdx != toIdx && fromIdx != 0 && toIdx != 0
-            && toIdx < (NSInteger)self.ic.mappings.count;
+    NSInteger count = (NSInteger)self.ic.mappings.count;
+    return fromIdx >= 0 && fromIdx < count &&
+           toIdx >= 0 && toIdx < count &&
+           fromIdx != toIdx;
 }
 
 - (void)mappingsViewController:(NJMappingsViewController *)mvc
@@ -540,9 +601,10 @@ static NSString *NJInterfaceString(NSString *key, NSString *fallback) {
     return self.ic.devices[idx];
 }
 
-- (IBAction)simulatingEventsChanged:(NSButton *)sender {
-    self.ic.simulatingEvents = sender.state == NSControlStateValueOn;
+- (IBAction)toggleSimulation:(id)sender {
+    self.ic.simulatingEvents = !self.ic.simulatingEvents;
 }
+
 
 - (void)outputViewController:(NJOutputViewController *)ovc
                    setOutput:(NJOutput *)output

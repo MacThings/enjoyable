@@ -205,3 +205,13 @@
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "lam-hX-jkC"; */
 "lam-hX-jkC.title" = "Vérifier les mises à jour…";
 
+
+
+/* Class = "NSMenuItem"; title = "Clone"; ObjectID = "CLN-01-AbC"; */
+"CLN-01-AbC.title" = "Cloner";
+
+/* Class = "NSButton"; title = "Clone"; ObjectID = "CLP-01-GhI"; */
+"CLP-01-GhI.title" = "Cloner";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Clone the active mapping"; ObjectID = "CLP-01-GhI"; */
+"CLP-01-GhI.ibShadowedToolTip" = "Cloner le mappage actif";

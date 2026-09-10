@@ -37,8 +37,11 @@ static float normalize(CFIndex p, CFIndex min, CFIndex max) {
                           [[NJInput alloc] initWithName:NSLocalizedString(@"axis high", @"axis high trigger")
                                                     eid:@"High"
                                                    parent:self]];
-        _rawMax = IOHIDElementGetPhysicalMax(element);
-        _rawMin = IOHIDElementGetPhysicalMin(element);
+        // IOHIDValueGetIntegerValue() is expressed in the element's logical
+        // range. Using the physical range here can mis-normalize controllers
+        // whose physical units differ or are omitted (notably Nintendo HID).
+        _rawMax = IOHIDElementGetLogicalMax(element);
+        _rawMin = IOHIDElementGetLogicalMin(element);
     }
     return self;
 }

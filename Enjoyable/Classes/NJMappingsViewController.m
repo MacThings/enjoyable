@@ -11,7 +11,14 @@
 
 #define PB_ROW @"de.slsoft.Enjoyable.MappingRow"
 
+static const CGFloat NJMappingPopoverWidth = 300.0;
+static const CGFloat NJMappingRowHeight = 30.0;
+static const CGFloat NJMappingPopoverFooterHeight = 58.0;
+static const NSInteger NJMappingPopoverMinVisibleRows = 2;
+static const NSInteger NJMappingPopoverMaxVisibleRows = 8;
+
 @interface NJMappingsViewController () <NSFilePromiseProviderDelegate>
+@property (nonatomic, strong) NSButton *launchEnabledCheckbox;
 @end
 
 @implementation NJMappingsViewController
@@ -19,6 +26,55 @@
 - (void)awakeFromNib {
     [self.mappingList registerForDraggedTypes:@[PB_ROW, NSPasteboardTypeURL, NSPasteboardTypeFileURL]];
     [self.mappingList setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
+
+    self.mappingList.usesAlternatingRowBackgroundColors = NO;
+    self.mappingList.rowHeight = NJMappingRowHeight;
+    self.mappingList.intercellSpacing = NSMakeSize(0.0, 0.0);
+    self.mappingList.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
+    self.mappingList.columnAutoresizingStyle = NSTableViewUniformColumnAutoresizingStyle;
+
+    NSTableColumn *column = self.mappingList.tableColumns.firstObject;
+    column.resizingMask = NSTableColumnAutoresizingMask;
+
+    NSScrollView *scrollView = self.mappingList.enclosingScrollView;
+    scrollView.autohidesScrollers = YES;
+    scrollView.hasHorizontalScroller = NO;
+    scrollView.horizontalScrollElasticity = NSScrollElasticityNone;
+
+    NSString *launchTitle = NSLocalizedString(@"Enable at Launch",
+                                               @"checkbox to enable mappings automatically when Enjoyable starts");
+    self.launchEnabledCheckbox = [NSButton checkboxWithTitle:launchTitle
+                                                     target:self
+                                                     action:@selector(toggleLaunchEnabled:)];
+    self.launchEnabledCheckbox.frame = NSMakeRect(8.0, 32.0, 284.0, 22.0);
+    self.launchEnabledCheckbox.autoresizingMask = NSViewWidthSizable | NSViewMaxYMargin;
+    self.launchEnabledCheckbox.controlSize = NSControlSizeSmall;
+    self.launchEnabledCheckbox.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    self.launchEnabledCheckbox.toolTip = launchTitle;
+    self.launchEnabledCheckbox.state = [NSUserDefaults.standardUserDefaults boolForKey:@"launch enabled"]
+        ? NSControlStateValueOn
+        : NSControlStateValueOff;
+    [self.view addSubview:self.launchEnabledCheckbox];
+
+    [self updateMappingPopoverSize];
+}
+
+- (IBAction)toggleLaunchEnabled:(NSButton *)sender {
+    [NSUserDefaults.standardUserDefaults setBool:(sender.state == NSControlStateValueOn)
+                                          forKey:@"launch enabled"];
+}
+
+- (void)updateMappingPopoverSize {
+    NSInteger rowCount = self.mappingList.numberOfRows;
+    NSInteger visibleRows = MAX(NJMappingPopoverMinVisibleRows, rowCount);
+    visibleRows = MIN(NJMappingPopoverMaxVisibleRows, visibleRows);
+
+    CGFloat listHeight = (CGFloat)visibleRows * NJMappingRowHeight + 2.0;
+    CGFloat contentHeight = NJMappingPopoverFooterHeight + listHeight;
+
+    NSScrollView *scrollView = self.mappingList.enclosingScrollView;
+    scrollView.hasVerticalScroller = rowCount > NJMappingPopoverMaxVisibleRows;
+    self.mappingListPopover.contentSize = NSMakeSize(NJMappingPopoverWidth, contentHeight);
 }
 
 - (IBAction)addClicked:(id)sender {
@@ -37,34 +93,49 @@
 - (IBAction)moveUpClicked:(id)sender {
     NSInteger fromIdx = self.mappingList.selectedRow;
     NSInteger toIdx = fromIdx - 1;
-    if (toIdx < 0) return; // Verhindert ungültigen Index
+    if (![self.delegate mappingsViewController:self
+                       canMoveMappingFromIndex:fromIdx
+                                       toIndex:toIdx]) {
+        return;
+    }
+
     [self.delegate mappingsViewController:self moveMappingFromIndex:fromIdx toIndex:toIdx];
     [self.mappingList scrollRowToVisible:toIdx];
-    [self.mappingList selectRowIndexes:[[NSIndexSet alloc] initWithIndex:toIdx] byExtendingSelection:NO];
+    [self.mappingList selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)toIdx]
+                 byExtendingSelection:NO];
 }
 
 - (IBAction)moveDownClicked:(id)sender {
     NSInteger fromIdx = self.mappingList.selectedRow;
     NSInteger toIdx = fromIdx + 1;
-    if (toIdx >= [self.mappingList numberOfRows]) return; // Verhindert ungültigen Index
+    if (![self.delegate mappingsViewController:self
+                       canMoveMappingFromIndex:fromIdx
+                                       toIndex:toIdx]) {
+        return;
+    }
+
     [self.delegate mappingsViewController:self moveMappingFromIndex:fromIdx toIndex:toIdx];
     [self.mappingList scrollRowToVisible:toIdx];
-    [self.mappingList selectRowIndexes:[[NSIndexSet alloc] initWithIndex:toIdx] byExtendingSelection:NO];
+    [self.mappingList selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)toIdx]
+                 byExtendingSelection:NO];
 }
 
 - (IBAction)mappingTriggerClicked:(id)sender {
-    [self.mappingListPopover showRelativeToRect:self.mappingListTrigger.bounds
-                                         ofView:self.mappingListTrigger
-                                  preferredEdge:NSMinXEdge];
-    self.mappingListTrigger.state = NSControlStateValueOn;
-}
+    [self updateMappingPopoverSize];
 
-- (void)popoverWillShow:(NSNotification *)notification {
-    self.mappingListTrigger.state = NSControlStateValueOn;
-}
+    if (@available(macOS 14.0, *)) {
+        if ([sender isKindOfClass:NSToolbarItem.class]) {
+            [self.mappingListPopover showRelativeToToolbarItem:(NSToolbarItem *)sender];
+            return;
+        }
+    }
 
-- (void)popoverWillClose:(NSNotification *)notification {
-    self.mappingListTrigger.state = NSControlStateValueOff;
+    NSView *anchorView = [sender isKindOfClass:NSView.class] ? sender : self.mappingPopoverAnchorView;
+    if (!anchorView)
+        return;
+    [self.mappingListPopover showRelativeToRect:anchorView.bounds
+                                         ofView:anchorView
+                                  preferredEdge:NSMaxYEdge];
 }
 
 - (void)beginUpdates {
@@ -74,14 +145,19 @@
 - (void)endUpdates {
     [self.mappingList endUpdates];
     [self changedActiveMappingToIndex:self.mappingList.selectedRow];
+    [self updateMappingPopoverSize];
 }
 
 - (void)addedMappingAtIndex:(NSInteger)index startEditing:(BOOL)startEditing {
     [self.mappingList abortEditing];
     [self.mappingList insertRowsAtIndexes:[[NSIndexSet alloc] initWithIndex:index]
                             withAnimation:startEditing ? 0 : NSTableViewAnimationSlideLeft];
+    [self updateMappingPopoverSize];
     if (startEditing) {
-        [self.mappingListTrigger performClick:self];
+        id anchor = self.mappingToolbarItem;
+        if (!anchor)
+            anchor = self.mappingPopoverAnchorView;
+        [self mappingTriggerClicked:anchor];
         [self.mappingList editColumn:0 row:index withEvent:nil select:YES];
         [self.mappingList scrollRowToVisible:index];
     }
@@ -91,6 +167,7 @@
     [self.mappingList abortEditing];
     [self.mappingList removeRowsAtIndexes:[[NSIndexSet alloc] initWithIndex:index]
                             withAnimation:NSTableViewAnimationEffectFade];
+    [self updateMappingPopoverSize];
 }
 
 - (void)changedActiveMappingToIndex:(NSInteger)index {
@@ -102,14 +179,12 @@
         return;
     }
 
-    NJMapping *mapping = [self.delegate mappingsViewController:self mappingForIndex:index];
     self.removeMapping.enabled = [self.delegate mappingsViewController:self
                                                canRemoveMappingAtIndex:index];
     self.moveUp.enabled = index > 0 &&
         [self.delegate mappingsViewController:self canMoveMappingFromIndex:index toIndex:index - 1];
     self.moveDown.enabled = index + 1 < count &&
         [self.delegate mappingsViewController:self canMoveMappingFromIndex:index toIndex:index + 1];
-    self.mappingListTrigger.title = mapping.name;
     [self.mappingList selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)index]
                  byExtendingSelection:NO];
     [self.mappingList scrollRowToVisible:index];
@@ -179,7 +254,7 @@
        proposedDropOperation:(NSTableViewDropOperation)dropOperation {
     NSPasteboard *pboard = [info draggingPasteboard];
     if ([pboard.types containsObject:PB_ROW]) {
-        [tableView setDropRow:MAX(1, row) dropOperation:NSTableViewDropAbove];
+        [tableView setDropRow:MAX(0, row) dropOperation:NSTableViewDropAbove];
         return NSDragOperationMove;
     } else if ([pboard.types containsObject:NSPasteboardTypeURL]) {
         NSURL *url = [NSURL URLFromPasteboard:pboard];
@@ -221,6 +296,7 @@
 
 - (void)reloadData {
     [self.mappingList reloadData];
+    [self updateMappingPopoverSize];
 }
 
 
@@ -240,7 +316,6 @@
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
     [coder encodeObject:self.mappingList forKey:@"mappingList"];
     [coder encodeObject:self.mappingListPopover forKey:@"mappingListPopover"];
-    [coder encodeObject:self.mappingListTrigger forKey:@"mappingListTrigger"];
     [coder encodeObject:self.removeMapping forKey:@"removeMapping"];
     [coder encodeObject:self.moveUp forKey:@"moveUp"];
     [coder encodeObject:self.moveDown forKey:@"moveDown"];

@@ -154,3 +154,27 @@
 /* name for new mappings */
 "Untitled" = "Sans titre";
 
+
+/* checkbox to enable mappings automatically when Enjoyable starts */
+"Enable at Launch" = "Activer au démarrage";
+
+/* toolbar state when mapped actions are enabled */
+"Enabled" = "Activé";
+
+/* toolbar state when mapped actions are disabled */
+"Disabled" = "Désactivé";
+
+/* toolbar status item */
+"Status" = "État";
+
+/* toolbar tooltip while mappings are disabled */
+"Enable mapped actions" = "Activer les actions mappées";
+
+/* toolbar tooltip while mappings are enabled */
+"Disable mapped actions" = "Désactiver les actions mappées";
+
+/* default name for a cloned mapping */
+"%@ copy" = "Copie de %@";
+
+/* default name for an additional cloned mapping */
+"%@ copy %ld" = "Copie %2$ld de %1$@";

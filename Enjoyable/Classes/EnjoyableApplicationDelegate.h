@@ -29,11 +29,11 @@
 @property (nonatomic, strong) IBOutlet NSMenu *dockMenu;
 @property (nonatomic, strong) IBOutlet NSMenu *statusItemMenu;
 @property (nonatomic, strong) IBOutlet NSWindow *window;
-@property (nonatomic, strong) IBOutlet NSButton *simulatingEventsButton;
 
 - (IBAction)restoreToForeground:(id)sender;
 - (IBAction)importMappingClicked:(id)sender;
 - (IBAction)exportMappingClicked:(id)sender;
-- (IBAction)simulatingEventsChanged:(NSButton *)sender;
+- (IBAction)cloneMappingClicked:(id)sender;
+- (IBAction)toggleSimulation:(id)sender;
 
 @end

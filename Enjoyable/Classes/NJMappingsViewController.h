@@ -18,7 +18,8 @@
 
 @property (nonatomic, strong) IBOutlet NSButton *removeMapping;
 @property (nonatomic, strong) IBOutlet NSTableView *mappingList;
-@property (nonatomic, strong) IBOutlet NSButton *mappingListTrigger;
+@property (nonatomic, weak) NSToolbarItem *mappingToolbarItem;
+@property (nonatomic, weak) NSView *mappingPopoverAnchorView;
 @property (nonatomic, strong) IBOutlet NSPopover *mappingListPopover;
 @property (nonatomic, strong) IBOutlet NSButton *moveUp;
 @property (nonatomic, strong) IBOutlet NSButton *moveDown;
