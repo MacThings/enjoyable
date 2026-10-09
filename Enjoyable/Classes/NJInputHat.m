@@ -104,6 +104,9 @@ static BOOL active_fourway[20] = {
         parsed++;
         size++;
     }
+    // A centered hat with a null state reports a value outside its range.
+    if (parsed < 0 || parsed > size)
+        parsed = 0;
     BOOL *activechildren = (size == 8) ? active_eightway : active_fourway;
     for (unsigned i = 0; i < 4; i++) {
         BOOL active = activechildren[parsed * 4 + i];
